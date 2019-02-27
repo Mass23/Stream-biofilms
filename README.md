@@ -3,6 +3,6 @@
 ## 1. Data verification
 
 ### 1.1 Missing projects/samples
-Script: [link!](https://github.com/Mass23/StreamBiofilms/blob/master/control_accessions.py)
+Script: [control_accessions.py](https://github.com/Mass23/StreamBiofilms/blob/master/control_accessions.py)
 
 ### 1.2 Removing missing projects/samples from metadata file
