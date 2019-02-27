@@ -18,6 +18,7 @@ Update the metadata .tsv file removing the projects lacking sequences, as they w
 Script: [metadata_update.py](https://github.com/Mass23/StreamBiofilms/blob/master/metadata_update.py)
 
 ### 1.3 Get stats for trimming values
+Get .tsv file and histograms for each project for the following metrics:
 - Length of sequences per project
 - Forward primer position
 - Reverse primer position
