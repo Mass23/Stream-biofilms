@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from multiprocessing import Pool
 
-n_cores = 16
+n_cores = 24
 data_inputs = glob.glob('*')
 data_inputs = [i for i in data_inputs if os.path.isdir(i) == True]
 
@@ -74,7 +74,7 @@ def ProcessProject(project):
 
                         elif rc_reverse_primer_index == None:
                              out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), 'NA']) + '\n')
-                             
+
                         else:
                             out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), str(reverse_primer_index)]) + '\n')
 
