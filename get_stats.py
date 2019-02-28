@@ -59,9 +59,22 @@ def ProcessProject(project):
 
                             if rc_forward_primer_index == None and rc_reverse_primer_index == None:
                                 out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA']) + '\n')
+
+                            elif rc_forward_primer_index == None:
+                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', str(rc_reverse_primer_index)]) + '\n')
+
+                            elif rc_reverse_primer_index == None:
+                                 out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), 'NA']) + '\n')
+
                             else:
                                 out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), str(rc_reverse_primer_index)]) + '\n')
 
+                        elif rc_forward_primer_index == None:
+                            out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', str(rc_reverse_primer_index)]) + '\n')
+
+                        elif rc_reverse_primer_index == None:
+                             out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), 'NA']) + '\n')
+                             
                         else:
                             out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), str(reverse_primer_index)]) + '\n')
 
