@@ -29,3 +29,5 @@ Get .tsv file and histograms for each project for the following metrics:
 - Reverse primer position
 
 Script: [get_stats.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_stats.py)
+
+- The reads seem already trimmed (similar length for many, no primers found in the sequences)
