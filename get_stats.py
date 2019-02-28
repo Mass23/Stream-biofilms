@@ -1,6 +1,5 @@
 # Author: Massimo Bourquin
 
-
 import glob
 import os
 from Bio import SeqIO
@@ -42,7 +41,7 @@ def ProcessProject(project):
     samples_list = glob.glob(project + '/*')
 
     with open(project + '/' + project + '_stats.tsv', 'w') as out:
-        out.write('SampleID\tSequenceID\tLength\tForwardPrimerIndex\tReversePrimerIndex\n')
+        out.write('SampleID\tSequenceID\tLength\tForwardPrimerIndex\tReversePrimerIndex\tDirection\n')
 
         for sample in samples_list:
             sample_name = sample.split('/')[-1]
@@ -61,28 +60,28 @@ def ProcessProject(project):
                             rc_reverse_primer_index = GetReversePrimerIndex(record.seq.reverse_complement())
 
                             if rc_forward_primer_index == None and rc_reverse_primer_index == None:
-                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA']) + '\n')
+                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA', 'NA']) + '\n')
 
                             elif rc_forward_primer_index == None:
-                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', str(rc_reverse_primer_index)]) + '\n')
+                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', str(rc_reverse_primer_index), 'rc']) + '\n')
 
                             elif rc_reverse_primer_index == None:
-                                 out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), 'NA']) + '\n')
+                                 out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), 'NA', 'rc']) + '\n')
 
                             else:
-                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), str(rc_reverse_primer_index)]) + '\n')
+                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), str(rc_reverse_primer_index), 'rc']) + '\n')
 
                         elif rc_forward_primer_index == None:
-                            out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', str(rc_reverse_primer_index)]) + '\n')
+                            out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', str(reverse_primer_index), 'normal']) + '\n')
 
                         elif rc_reverse_primer_index == None:
-                             out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), 'NA']) + '\n')
+                             out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), 'NA', 'normal']) + '\n')
 
                         else:
-                            out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), str(reverse_primer_index)]) + '\n')
+                            out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), str(reverse_primer_index), 'normal']) + '\n')
 
                     else:
-                        out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA']) + '\n')
+                        out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA', 'NA']) + '\n')
 
     with open(project + '/' + project + '_stats.tsv') as file:
         col_names = ['SampleID', 'SequenceID', 'Length', 'ForwardPrimerIndex', 'ReversePrimerIndex']
