@@ -1,9 +1,13 @@
 # StreamBiofilms - EMP dataset
 
-References:
-- Qiime2 site: https://qiime2.org/
+Qiime2:
+- Site: https://qiime2.org/
 - Paper: https://peerj.com/preprints/27295/
-- EMP project paper: https://www.nature.com/articles/nature24621
+
+Earth microbiome project:
+- Project	: http://www.earthmicrobiome.org/
+- Article 	: https://www.nature.com/articles/nature24621
+- Github 	: https://github.com/biocore/emp
 
 ## 1. Data verification
 
