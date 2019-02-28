@@ -70,7 +70,7 @@ def ProcessProject(project):
 
     with open(project + '/' + project + '_stats.tsv') as file:
         col_names = ['SampleID', 'SequenceID', 'Length', 'ForwardPrimerIndex', 'ReversePrimerIndex']
-        data = pd.read_csv(file, sep='\t', header=1, names = col_names)
+        data = pd.read_csv(file, sep='\t', header=1, names = col_names, na_values = 'NA', dtype={'SampleID': str, 'SequenceID': str, 'Length': int, 'ForwardPrimerIndex': int, 'ReversePrimerIndex': int})
 
         plt.figure()
         plt.hist(data['Length'])
