@@ -48,7 +48,7 @@ def ProcessProject(project):
                 for record in SeqIO.parse(fasta, "fasta"):
                     sequence_name = record.id.split(' ')[0].replace('>','')
 
-                    if len(record.seq) > 39:
+                    if len(record.seq) > 19:
 
                         forward_primer_index = GetForwardPrimerIndex(record.seq)
                         reverse_primer_index = GetReversePrimerIndex(record.seq)
