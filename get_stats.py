@@ -3,9 +3,11 @@ import os
 from Bio import SeqIO
 import pandas as pd
 import matplotlib.pyplot as plt
+from multiprocessing import Pool
 
-projects_list = glob.glob('*')
-projects_list = [i for i in projects_list if os.path.isdir(i) == True]
+n_cores = 16
+data_inputs = glob.glob('*')
+data_inputs = [i for i in data_inputs if os.path.isdir(i) == True]
 
 def GetForwardPrimerIndex(seq):
     # Forward primer: GTG*CAGC*GCCGCGGTAA
@@ -18,10 +20,10 @@ def GetForwardPrimerIndex(seq):
             else:
                 continue
     except:
-        return(-1)
+        return('NA')
 
 def GetReversePrimerIndex(seq):
-    # Forward primer: GGACTAC**GGGT*TCTAAT
+    # Reverse primer: GGACTAC**GGGT*TCTAAT
     #                 12345678911111111112
     #                          01234567890
     try:
@@ -31,9 +33,9 @@ def GetReversePrimerIndex(seq):
             else:
                 continue
     except:
-        return(-1)
+        return('NA')
 
-for project in projects_list:
+def ProcessProject(project):
     samples_list = glob.glob(project + '/*')
 
     with open(project + '/' + project + '_stats.tsv', 'w') as out:
@@ -45,9 +47,26 @@ for project in projects_list:
             with open(project + '/' + sample_name + '/' + sample_name + '.fna') as fasta:
                 for record in SeqIO.parse(fasta, "fasta"):
                     sequence_name = record.id.split(' ')[0].replace('>','')
-                    forward_primer_index = GetForwardPrimerIndex(record.seq)
-                    reverse_primer_index = GetReversePrimerIndex(record.seq)
-                    out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), str(reverse_primer_index)]) + '\n')
+
+                    if len(record.seq) > 39:
+
+                        forward_primer_index = GetForwardPrimerIndex(record.seq)
+                        reverse_primer_index = GetReversePrimerIndex(record.seq)
+
+                        if forward_primer_index == None and reverse_primer_index == None:
+                            rc_forward_primer_index = GetForwardPrimerIndex(record.seq.reverse_complement())
+                            rc_reverse_primer_index = GetReversePrimerIndex(record.seq.reverse_complement())
+
+                            if rc_forward_primer_index == None and rc_reverse_primer_index == None:
+                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA']) + '\n')
+                            else:
+                                out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(rc_forward_primer_index), str(rc_reverse_primer_index)]) + '\n')
+
+                        else:
+                            out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), str(forward_primer_index), str(reverse_primer_index)]) + '\n')
+
+                    else:
+                        out.write('\t'.join([sample_name, sequence_name, str(len(record.seq)), 'NA', 'NA']) + '\n')
 
     with open(project + '/' + project + '_stats.tsv') as file:
         col_names = ['SampleID', 'SequenceID', 'Length', 'ForwardPrimerIndex', 'ReversePrimerIndex']
@@ -67,3 +86,10 @@ for project in projects_list:
         plt.hist(data['ReversePrimerIndex'])
         plt.savefig(project + '/' + project + '_ReversePrimerIndex.png')
         plt.close()
+
+        print('Project: ', project, ' done!')
+
+pool = Pool(n_cores)
+pool.map(ProcessProject, data_inputs)
+pool.close()
+pool.join()
