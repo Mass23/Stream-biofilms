@@ -108,3 +108,4 @@ pool = Pool(n_cores)
 pool.map(ProcessProject, data_inputs)
 pool.close()
 pool.join()
+
