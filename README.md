@@ -48,18 +48,23 @@ The following qiime2 plugins are used:
 - Merging: https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
 
 #### 2.1 Import data
+```
 qiime tools import \
   --type EMPSingleEndSequences \
   --input-path emp-single-end-sequences \
   --output-path emp-single-end-sequences.qza
+```
 
 #### 2.2 Remove adaptors contaminants
+```
 qiime cutadapt trim-single \
   --i-demultiplexed-sequences emp-single-end-sequences.qza \
   --p-adapter emp-adapters \
   --o-trimmed-sequences emp-trimmed.qza \
+```
 
 #### 2.3 Denoise and cluster
+```
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs emp-trimmed.qza \
   --p-trunc-len int \
@@ -67,22 +72,28 @@ qiime dada2 denoise-single \
   --o-table emp-table \
   --o-representative-sequences emp-seqs \
   --o-denoising-stats emp-stats \
+```
 
 #### 2.4 Merge studies per project
+```
 qiime feature-table merge \
   --i-tables table-1.qza \
   --i-tables table-2.qza \
   --o-merged-table table.qza
+  
 qiime feature-table merge-seqs \
   --i-data rep-seqs-1.qza \
   --i-data rep-seqs-2.qza \
   --o-merged-data rep-seqs.qza
+```
 
 #### 2.5 Filter table
+```
 qiime feature-table filter-features \
   --i-table table.qza \
   --p-min-frequency 10 \
   --o-filtered-table feature-frequency-filtered-table.qza
+```
 
 ## 3. Data analysis
 
