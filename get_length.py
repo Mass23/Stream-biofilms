@@ -66,3 +66,6 @@ with open('full_length.tsv') as file:
     sns.heatmap(values)
     plt.savefig('heatmap.png')
     plt.close()
+   
+print('Done!')
+
