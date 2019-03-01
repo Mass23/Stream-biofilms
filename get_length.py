@@ -46,7 +46,7 @@ with open('full_length.tsv', 'w') as out:
     out.write('ProjectID\tSample_size\tMeanLength' + '\t'.join([i for i in range(1,300) + '\n']))
     for project in data_inputs:
         col_names = ['SampleID', 'SequenceID', 'Length']
-        data = pd.read_csv(file, sep='\t', header=1, names = col_names, na_values = 'NA', dtype={'SampleID': str, 'SequenceID': str, 'Length': int})
+        data = pd.read_csv(open(project + '/' + project + '_stats.tsv'), sep='\t', header=1, names = col_names, na_values = 'NA', dtype={'SampleID': str, 'SequenceID': str, 'Length': int})
 
         current_results = []
         current_results.append(project)
