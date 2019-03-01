@@ -69,7 +69,7 @@ qiime cutadapt trim-single \
 ```
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs emp-trimmed.qza \
-  --p-trunc-len int \
+  --p-trunc-len 90 \
   --p-trunc-q 30 \
   --o-table emp-table \
   --o-representative-sequences emp-seqs \
