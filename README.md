@@ -47,6 +47,8 @@ The following qiime2 plugins are used:
 - Dada2: https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
 - Merging: https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
 
+Script: [preprocess_emp.py](https://github.com/Mass23/StreamBiofilms/blob/master/preprocess_emp.py)
+
 #### 2.1.1 Import data
 ```
 qiime tools import \
