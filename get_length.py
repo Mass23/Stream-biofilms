@@ -7,7 +7,7 @@ from multiprocessing import Pool
 import numpy as np
 import seaborn as sns
 
-n_cores = 24
+n_cores = 26
 data_inputs = glob.glob('*')
 data_inputs = [i for i in data_inputs if os.path.isdir(i) == True]
 
@@ -21,10 +21,14 @@ def ProcessProject(project):
             sample_name = sample.split('/')[-1]
 
             with open(project + '/' + sample_name + '/' + sample_name + '.fq') as fastq:
-                for record in SeqIO.parse(fastq, "fastq"):
-                    sequence_name = record.id.split(' ')[0].replace('>','')
+                try:
+                    fastq_file = SeqIO.parse(fastq, "fastq")
+                    for record in fastq_file:
+                        sequence_name = record.id.split(' ')[0].replace('>','')
 
-                    out.write('\t'.join([sample_name, sequence_name, str(len(record.seq))]) + '\n')
+                        out.write('\t'.join([sample_name, sequence_name, str(len(record.seq))]) + '\n')
+                except:
+                    print(sample_name, '\t', sequence_name, '\t', 'Warning: Differing length between quality and sequence!')
 
     with open(project + '/' + project + '_stats.tsv') as file:
         col_names = ['SampleID', 'SequenceID', 'Length']
@@ -45,17 +49,18 @@ pool.join()
 with open('full_length.tsv', 'w') as out:
     out.write('ProjectID\tSample_size\tMeanLength' + '\t'.join([i for i in range(1,300) + '\n']))
     for project in data_inputs:
-        col_names = ['SampleID', 'SequenceID', 'Length']
-        data = pd.read_csv(open(project + '/' + project + '_stats.tsv'), sep='\t', header=1, names = col_names, na_values = 'NA', dtype={'SampleID': str, 'SequenceID': str, 'Length': int})
+        with open(project + '/' + project + '_stats.tsv') as file:
+            col_names = ['SampleID', 'SequenceID', 'Length']
+            data = pd.read_csv(file, sep='\t', header=1, names = col_names, na_values = 'NA', dtype={'SampleID': str, 'SequenceID': str, 'Length': int})
 
-        current_results = []
-        current_results.append(project)
-        current_results.append(len(data))
-        current_results.append(data['Length'].mean())
-        for i in range(1,300):
-            current_results.append(len(data[data['Length'] == i]))
+            current_results = []
+            current_results.append(project)
+            current_results.append(len(data))
+            current_results.append(data['Length'].mean())
+            for i in range(1,300):
+                current_results.append(len(data[data['Length'] == i]))
 
-        out.write('\t'.join(current_results) + '\n')
+            out.write('\t'.join(current_results) + '\n')
 
 with open('full_length.tsv') as file:
     col_names = ['ProjectID', 'Sample_size', 'MeanLength'] + [i for i in range(1,300)]
@@ -66,6 +71,3 @@ with open('full_length.tsv') as file:
     sns.heatmap(values)
     plt.savefig('heatmap.png')
     plt.close()
-   
-print('Done!')
-
