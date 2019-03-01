@@ -41,5 +41,9 @@ Script: [get_length.py](https://github.com/Mass23/StreamBiofilms/blob/master/get
 ## 2. Processing data
 ### 2.2 Import in qiime2 format, remove adaptors contamination and process using dada2
 
+The following qiime2 plugins are used:
+- Import: https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
+- Cutadapt: https://docs.qiime2.org/2019.1/plugins/available/cutadapt/trim-single/
+- Dada2: https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
 
 
