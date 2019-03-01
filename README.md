@@ -1,6 +1,7 @@
 # StreamBiofilms - EMP dataset
 
-## 1. Downloading data
+## 1 Downloading data
+### 1.1 Introduction
 
 Qiime2:
 - Site: https://qiime2.org/
@@ -17,7 +18,7 @@ Download EMP dataset: https://github.com/biocore/emp/blob/master/code/download-s
 - Already demultiplexed
 - Primers are already trimmed
 
-### 1.2 Downloading QC
+### 1.2 Download QC
 #### 1.2.1 Control accessions
 Verify that all the fasta files have been downloaded. If not, store the number of sequences available.
 
@@ -39,17 +40,11 @@ Get tab-separated files and histograms for the length of the reads per project, 
 Script: [get_length.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_length.py)
 
 ## 2. Pre-processing
-### 2.1 Import in qiime2 format, remove adaptors contamination and process using dada2
-
-The following qiime2 plugins are used:
-- Import: https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
-- Cutadapt: https://docs.qiime2.org/2019.1/plugins/available/cutadapt/trim-single/
-- Dada2: https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
-- Merging: https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
 
 Script: [preprocess_emp.py](https://github.com/Mass23/StreamBiofilms/blob/master/preprocess_emp.py)
 
-#### 2.1.1 Import data
+### 2.1 Import data
+https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 ```
 qiime tools import \
   --type EMPSingleEndSequences \
@@ -57,7 +52,8 @@ qiime tools import \
   --output-path emp-single-end-sequences.qza
 ```
 
-#### 2.1.2 Remove adaptors contaminants
+### 2.2 Remove adaptors contaminants
+https://docs.qiime2.org/2019.1/plugins/available/cutadapt/trim-single/
 ```
 qiime cutadapt trim-single \
   --i-demultiplexed-sequences emp-single-end-sequences.qza \
@@ -65,7 +61,8 @@ qiime cutadapt trim-single \
   --o-trimmed-sequences emp-trimmed.qza \
 ```
 
-#### 2.1.3 Denoise and cluster
+### 2.3 Denoise and cluster
+https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
 ```
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs emp-trimmed.qza \
@@ -76,7 +73,8 @@ qiime dada2 denoise-single \
   --o-denoising-stats emp-stats \
 ```
 
-#### 2.1.4 Merge studies per project
+### 2.4 Merge studies per project
+https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
 ```
 qiime feature-table merge \
   --i-tables table-1.qza \
@@ -89,7 +87,7 @@ qiime feature-table merge-seqs \
   --o-merged-data rep-seqs.qza
 ```
 
-#### 2.1.5 Filter table
+### 2.5 Filter table
 ```
 qiime feature-table filter-features \
   --i-table table.qza \
