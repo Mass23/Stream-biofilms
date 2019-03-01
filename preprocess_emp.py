@@ -24,6 +24,8 @@ subprocess.call('source activate qiime2-2019.1', shell = True)
 data_inputs = glob.glob(project + '/*/*.fq')
 studies_list = [i.replace('.fq','') for i in data_inputs]
 
+print('processing fastq files...')
+
 def ProcessFasta(file):
     study = file.split('.')[0]
 
@@ -35,11 +37,14 @@ def ProcessFasta(file):
 
     dada2_args = ['qiime dada2 denoise-single', '--i-demultiplexed-seqs', study + '_trimmed.qza', '--p-trunc-len', trimming_length, '--p-trunc-q', quality_threshold, '--o-table', study + '_raw_table.qza', '--o-representative-sequences', study + '_raw_seqs.qza', '--o-denoising-stats', study + '_denoising_stats.qza']
     subprocess.call(' '.join(dada2_args), shell = True)
+    print(study, 'done!')
 
 pool = Pool(n_cores)
 pool.map(ProcessFasta, data_inputs)
 pool.close()
 pool.join()
+
+print('Merging tables...')
 
 merge_tables_args = ['qiime feature-table merge', ' '.join([str('--i-tables ' + study + '_raw_table.qza') for study in studies_list]), '--o-merged-data', project + '_table_merged.qza']
 subprocess.call(' '.join(merge_tables_args), shell = True)
@@ -47,7 +52,11 @@ subprocess.call(' '.join(merge_tables_args), shell = True)
 merge_seqs_args = ['qiime feature-table merge-seqs', ' '.join([str('--i-data ' + study + '_raw_seqs.qza') for study in studies_list]), '--o-merged-data', project + '_seqs_merged.qza']
 subprocess.call(' '.join(merge_seqs_args), shell = True)
 
+print('Filtering features...')
+
 filter_args = ['qiime feature-table filter-features', '--i-table', project + '_table_merged.qza', '--p-min-frequency', frequency_filter, '--o-filtered-table', project + '_table_filtered.qza']
 subprocess.call(' '.join(filter_args), shell = True)
 
 subprocess.call('source deactivate', shell = True)
+
+print('Done!')
