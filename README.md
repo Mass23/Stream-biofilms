@@ -49,11 +49,8 @@ The following qiime2 plugins are used:
 - Merging: https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
 
 ## 3. Data analysis
-### 3.1 Metadata
-![alt text](https://github.com/Mass23/StreamBiofilms/blob/master/Figure_1.png)
-**Fig. 1** All pairwise correlations between all numeric variables available in the metadata file (Pearson's method).
 
-### 3.2 Taxonomic composition of the bioms
+### 3.1 Taxonomic composition of the bioms
 
-### 3.3 Phylogeny
+### 3.2 Phylogeny
 
