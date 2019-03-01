@@ -59,7 +59,7 @@ with open('full_length.tsv', 'w') as out:
 
 with open('full_length.tsv') as file:
     col_names = ['ProjectID', 'Sample_size', 'MeanLength'] + [i for i in range(1,300)]
-    data = pd.read_csv(file, sep='\t', header=1, names = col_names, na_values = 'NA'})
+    data = pd.read_csv(file, sep='\t', header=1, names = col_names, na_values = 'NA')
     values = data[[i for i in range(1,300)]]
 
     plt.figure()
