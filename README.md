@@ -51,7 +51,7 @@ The following qiime2 plugins are used:
 ## 3. Data analysis
 ### 3.1 Metadata
 ![alt text](https://github.com/Mass23/StreamBiofilms/blob/master/Figure_1.png)
-**Fig. 1** Pairwise correlations between all the numeric variables available in the metadata file (Person's method).
+**Fig. 1** All pairwise correlations between all numeric variables available in the metadata file (Pearson's method).
 
 ### 3.2 Taxonomic composition of the bioms
 
