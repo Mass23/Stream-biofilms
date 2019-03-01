@@ -34,7 +34,7 @@ Following this, these projects were not used (as they had some or all sequences 
 - ERP016384
 
 #### 1.2.3 Get length for trimming values
-Get .tsv file and histograms for the length of the reads per project.
+Get tab-separated files and histograms for the length of the reads per project, in the projects directories. A heatmap and a tab-separated file store the overall results in the dataset directory.
 
 Script: [get_length.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_length.py)
 
