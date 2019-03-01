@@ -2,7 +2,7 @@ import subprocess
 import glob
 import argparse
 
-# Arguments: python3 dada2.py -p ProjectID -n NumberOfCores -t TrimmingLength
+# Arguments: python3 preprocess_emp.py -p ProjectID -n 24 -t 90 -q 30 -f 10
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-p', '--ProjectID', help='Reference genome fasta file used for mapping', type=str, action = 'store', required = True)
