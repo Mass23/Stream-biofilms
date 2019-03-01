@@ -33,11 +33,10 @@ Following this, these projects were not used (as they had some or all sequences 
 - ERP006348
 - ERP016384
 
-#### 1.2.3 Get stats for trimming values
-Get .tsv file and histograms for each project for the following metrics:
-- Length of sequences per project
+#### 1.2.3 Get length for trimming values
+Get .tsv file and histograms for the length of the reads per project.
 
-Script: [get_stats.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_stats.py)
+Script: [get_stats.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_length.py)
 
 ## 2. Processing data
 ### 2.2 Import in qiime2 format, remove adaptors contamination and process using dada2
