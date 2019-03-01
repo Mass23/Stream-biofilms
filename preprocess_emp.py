@@ -5,7 +5,7 @@ import argparse
 # Arguments: python3 preprocess_emp.py -p ProjectID -n 24 -t 90 -q 30 -f 10
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-p', '--ProjectID', help='Reference genome fasta file used for mapping', type=str, action = 'store', required = True)
+parser.add_argument('-p', '--ProjectID', help='ID of the project to process', type=str, action = 'store', required = True)
 parser.add_argument('-n', '--NumberCores', help='Number of cores to use', type=int, action = 'store', required = True)
 parser.add_argument('-t', '--TrimmingLength', help='Value to put for the --p-trunc-len argument of Qiime2 dada2', type=int, action = 'store', required = True)
 parser.add_argument('-q', '--QualityThreshold', help='Value to put for the --p-trunc-q argument of Qiime2 dada2', type=int, action = 'store', required = True)
