@@ -51,4 +51,4 @@ The following qiime2 plugins are used:
 
 ### 3.2 Phylogeny
 
-- Heatmap with phylogenetic tree on the Y axis, all taxons as columns and bioms on the X axis, color represents presence.
+- Figure idea: Heatmap with phylogenetic tree on the Y axis, all taxons as columns and bioms on the X axis, color represents presence.
