@@ -20,8 +20,8 @@ def ProcessProject(project):
         for sample in samples_list:
             sample_name = sample.split('/')[-1]
 
-            with open(project + '/' + sample_name + '/' + sample_name + '.fna') as fasta:
-                for record in SeqIO.parse(fasta, "fasta"):
+            with open(project + '/' + sample_name + '/' + sample_name + '.fq') as fastq:
+                for record in SeqIO.parse(fastq, "fastq"):
                     sequence_name = record.id.split(' ')[0].replace('>','')
 
                     out.write('\t'.join([sample_name, sequence_name, str(len(record.seq))]) + '\n')
