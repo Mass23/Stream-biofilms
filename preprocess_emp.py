@@ -41,8 +41,8 @@ pool.map(ProcessFasta, data_inputs)
 pool.close()
 pool.join()
 
-merge_table_args = ['qiime feature-table merge', ' '.join(['--i-tables ' + study + '_raw_table.qza' for study in studies_list]), '--o-merged-data', project + '_table_merged.qza']
-merge_seqs_args = ['qiime feature-table merge-seqs', ' '.join(['--i-data ' + study + '_raw_seqs.qza' for study in studies_list]), '--o-merged-data', project + '_seqs_merged.qza']
+merge_table_args = ['qiime feature-table merge', ' '.join([str('--i-tables ' + study + '_raw_table.qza') for study in studies_list]), '--o-merged-data', project + '_table_merged.qza']
+merge_seqs_args = ['qiime feature-table merge-seqs', ' '.join([str('--i-data ' + study + '_raw_seqs.qza') for study in studies_list]), '--o-merged-data', project + '_seqs_merged.qza']
 
 filter_args = ['qiime feature-table filter-features', '--i-table', project + '_table_merged.qza', '--p-min-frequency', frequency_filter, '--o-filtered-table', project + '_table_filtered.qza']
 subprocess.call(' '.join(filter_args), shell = True)
