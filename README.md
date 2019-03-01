@@ -39,7 +39,7 @@ Get .tsv file and histograms for the length of the reads per project.
 Script: [get_length.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_length.py)
 
 ## 2. Pre-processing
-### 2.2 Import in qiime2 format, remove adaptors contamination and process using dada2
+### 2.1 Import in qiime2 format, remove adaptors contamination and process using dada2
 
 The following qiime2 plugins are used:
 - Import: https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
@@ -47,7 +47,7 @@ The following qiime2 plugins are used:
 - Dada2: https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
 - Merging: https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
 
-#### 2.1 Import data
+#### 2.1.1 Import data
 ```
 qiime tools import \
   --type EMPSingleEndSequences \
@@ -55,7 +55,7 @@ qiime tools import \
   --output-path emp-single-end-sequences.qza
 ```
 
-#### 2.2 Remove adaptors contaminants
+#### 2.1.2 Remove adaptors contaminants
 ```
 qiime cutadapt trim-single \
   --i-demultiplexed-sequences emp-single-end-sequences.qza \
@@ -63,7 +63,7 @@ qiime cutadapt trim-single \
   --o-trimmed-sequences emp-trimmed.qza \
 ```
 
-#### 2.3 Denoise and cluster
+#### 2.1.3 Denoise and cluster
 ```
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs emp-trimmed.qza \
@@ -74,7 +74,7 @@ qiime dada2 denoise-single \
   --o-denoising-stats emp-stats \
 ```
 
-#### 2.4 Merge studies per project
+#### 2.1.4 Merge studies per project
 ```
 qiime feature-table merge \
   --i-tables table-1.qza \
@@ -87,7 +87,7 @@ qiime feature-table merge-seqs \
   --o-merged-data rep-seqs.qza
 ```
 
-#### 2.5 Filter table
+#### 2.1.5 Filter table
 ```
 qiime feature-table filter-features \
   --i-table table.qza \
