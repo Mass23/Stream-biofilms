@@ -39,7 +39,7 @@ Get .tsv file and histograms for the length of the reads per project.
 Script: [get_length.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_length.py)
 
 ## 2. Pre-processing
-![alt text](https://github.com/Mass23/StreamBiofilms/blob/master/qiime_pipeline.pdf)
+![alt text](https://github.com/Mass23/StreamBiofilms/blob/master/qiime2_pipeline.pdf)
 ### 2.2 Import in qiime2 format, remove adaptors contamination and process using dada2
 
 The following qiime2 plugins are used:
