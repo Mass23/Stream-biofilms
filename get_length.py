@@ -28,7 +28,7 @@ def ProcessProject(project):
 
                         out.write('\t'.join([sample_name, sequence_name, str(len(record.seq))]) + '\n')
                 except:
-                    print(sample_name, '\t', sequence_name, '\t', 'Warning: Differing length between quality and sequence!')
+                    print(sample_name, '\t', sequence_name, '\t', 'Warning: fastq format not respected! e.g. differing length between quality and sequence')
 
     with open(project + '/' + project + '_stats.tsv') as file:
         col_names = ['SampleID', 'SequenceID', 'Length']
