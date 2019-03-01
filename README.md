@@ -47,7 +47,7 @@ The following qiime2 plugins are used:
 - Dada2: https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
 
 ## 3. Data analysis
-### 3.1 Taxonomy composition of the bioms
+### 3.1 Taxonomic composition of the bioms
 
 ### 3.2 Phylogeny
 
