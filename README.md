@@ -38,7 +38,7 @@ Get .tsv file and histograms for the length of the reads per project.
 
 Script: [get_length.py](https://github.com/Mass23/StreamBiofilms/blob/master/get_length.py)
 
-## 2. Processing data
+## 2. Pre-processing
 ### 2.2 Import in qiime2 format, remove adaptors contamination and process using dada2
 
 The following qiime2 plugins are used:
@@ -46,4 +46,8 @@ The following qiime2 plugins are used:
 - Cutadapt: https://docs.qiime2.org/2019.1/plugins/available/cutadapt/trim-single/
 - Dada2: https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
 
+## 3. Data analysis
+### 3.1 Taxonomy composition of the bioms
+
+### 3.2 Phylogeny
 
