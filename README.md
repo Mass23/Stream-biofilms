@@ -9,6 +9,8 @@ Earth microbiome project:
 - Article 	: https://www.nature.com/articles/nature24621
 - Github 	: https://github.com/biocore/emp
 
+Download EMP dataset: https://github.com/biocore/emp/blob/master/code/download-sequences/download_ebi_fastq.sh
+
 ## 1. Data verification
 
 ### 1.1 Missing projects/samples
