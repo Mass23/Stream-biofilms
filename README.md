@@ -99,7 +99,3 @@ qiime feature-table filter-features \
 
 ## 3. Data analysis
 
-### 3.1 Taxonomic composition of the bioms
-
-### 3.2 Phylogeny
-
