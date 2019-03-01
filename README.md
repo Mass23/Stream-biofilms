@@ -88,6 +88,7 @@ qiime feature-table merge-seqs \
 ```
 
 ### 2.5 Filter table
+https://docs.qiime2.org/2019.1/tutorials/filtering/
 ```
 qiime feature-table filter-features \
   --i-table table.qza \
