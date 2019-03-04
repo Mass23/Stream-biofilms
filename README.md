@@ -6,8 +6,10 @@ References:
 - Article: http://science.sciencemag.org/content/359/6373/320/
 - Data: https://figshare.com/s/82a2d3f5d38ace925492
 
-## 2. Qiime2
-### 2.1 Import/Summarise/Dada2
+## 2. Metadata
+
+## 3. Qiime2
+### 3.1 Import/Summarise/Dada2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
@@ -42,7 +44,7 @@ qiime dada2 denoise-paired \
 qiime metadata tabulate --m-input-file SMA_dada2_stats.qza --o-visualization SMA_dada2_stats.qzv
 ```
 
-### 2.2 Phylogeny
+### 3.2 Phylogeny
 ```
 #!/bin/bash
 
