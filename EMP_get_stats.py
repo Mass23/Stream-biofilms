@@ -1,5 +1,3 @@
-# Author: Massimo Bourquin
-
 import glob
 import os
 from Bio import SeqIO
