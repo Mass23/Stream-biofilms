@@ -21,7 +21,7 @@ qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
   --input-path SMA_manifest.csv \
   --output-path SMA_raw.qza \
-  --input-format PairedEndFastqManifestPhred64
+  --input-format PairedEndFastqManifestPhred33
 
 qiime demux summarize \
   --i-data SMA_raw.qza \
@@ -33,13 +33,41 @@ qiime dada2 denoise-paired \
   --p-trunc-len-r 215 \
   --p-trim-left-f 20 \
   --p-trim-left-r 10 \
-  --p-trunc-q 30 \
+  --p-trunc-q 20 \
   --p-n-threads 16 \
-  --o-table SMA_dada2_table \
-  --o-representative-sequences SMA_dada2_seqs \
-  --o-denoising-stats SMA_dada2_stats \
-  
+  --o-table SMA_dada2_table.qza \
+  --o-representative-sequences SMA_dada2_seqs.qza \
+  --o-denoising-stats SMA_dada2_stats.qza \
+
 qiime metadata tabulate --m-input-file SMA_dada2_stats.qza --o-visualization SMA_dada2_stats.qzv
+```
+
+### 2.2 Phylogeny
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+qiime alignment mafft \
+  --i-sequences SMA_dada2_seqs.qza \
+  --p-n-threads 16 \
+  --o-alignment SMA_aln_seqs.qza \
+
+qiime alignment mask \
+  --i-alignment SMA_aln_seqs.qza \
+  --o-masked-alignment SMA_masked_aln_seqs.qza
+
+qiime phylogeny raxml-rapid-bootstrap \
+  --i-alignment SMA_masked_aln_seqs.qza \
+  --p-bootstrap-replicates 100 \
+  --p-n-threads 16 \
+  --p-raxml-version AVX2 \
+  --p-substitution-model GTRCAT \
+  --o-tree SMA_GTRCAT_100bs.qza
+
+qiime phylogeny midpoint-root \
+  --i-tree SMA_GTRCAT_100bs.qza \
+  --o-rooted-tree SMA_GTRCAT_100bs_rooted.qza
 ```
 
 ***
