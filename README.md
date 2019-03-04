@@ -38,6 +38,8 @@ qiime dada2 denoise-paired \
   --o-table SMA_dada2_table \
   --o-representative-sequences SMA_dada2_seqs \
   --o-denoising-stats SMA_dada2_stats \
+  
+qiime metadata tabulate --m-input-file SMA_dada2_stats.qza --o-visualization SMA_dada2_stats.qzv
 ```
 
 ***
