@@ -1,4 +1,4 @@
-# StreamBiofilms - EMP dataset
+# EMP dataset
 
 ## 1 Downloading data
 ### 1.1 Introduction
@@ -97,4 +97,6 @@ qiime feature-table filter-features \
 ```
 
 ## 3. Data analysis
+
+# Soil microbiome atlas
 
