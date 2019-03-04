@@ -13,5 +13,5 @@ with open('SMA_manifest.csv', 'w') as out:
     out.write('sample-id,absolute-filepath,direction\n')
 
     for i in id_list:
-        out.write(','.join([str(i), 'reads/' + str(i) + '_R1.fastq.gz', 'forward\n']))
-        out.write(','.join([str(i), 'reads/' + str(i) + '_R2.fastq.gz', 'reverse\n']))
+        out.write(','.join([str(i), '/home/fodelian/Desktop/SMA/reads/' + str(i) + '_R1.fastq.gz', 'forward\n']))
+        out.write(','.join([str(i), '/home/fodelian/Desktop/SMA/reads/' + str(i) + '_R2.fastq.gz', 'reverse\n']))
