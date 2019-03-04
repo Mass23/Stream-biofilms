@@ -64,7 +64,7 @@ qiime feature-table filter-features \
   --o-filtered-table feature-frequency-filtered-table.qza
 ```
 
-
+***
 # EMP dataset
 
 ## 1 Downloading data
