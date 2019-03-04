@@ -1,3 +1,69 @@
+# Soil microbiome atlas
+
+## 1 Downloading data
+
+Article: http://science.sciencemag.org/content/359/6373/320/
+Data: https://figshare.com/s/82a2d3f5d38ace925492
+
+## 2 Qiime2
+### 2.1 Import data
+https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
+
+Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
+
+```
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path pe-64-manifest \
+  --output-path paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred64
+```
+
+### 2.2 Remove adaptors contaminants
+https://docs.qiime2.org/2019.1/plugins/available/cutadapt/trim-single/
+```
+qiime cutadapt trim-single \
+  --i-demultiplexed-sequences emp-single-end-sequences.qza \
+  --p-adapter emp-adapters \
+  --o-trimmed-sequences emp-trimmed.qza \
+```
+
+### 2.3 Denoise and cluster
+https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
+```
+qiime dada2 denoise-single \
+  --i-demultiplexed-seqs emp-trimmed.qza \
+  --p-trunc-len 90 \
+  --p-trunc-q 30 \
+  --o-table emp-table \
+  --o-representative-sequences emp-seqs \
+  --o-denoising-stats emp-stats \
+```
+
+### 2.4 Merge studies per project
+https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
+```
+qiime feature-table merge \
+  --i-tables table-1.qza \
+  --i-tables table-2.qza \
+  --o-merged-table table.qza
+  
+qiime feature-table merge-seqs \
+  --i-data rep-seqs-1.qza \
+  --i-data rep-seqs-2.qza \
+  --o-merged-data rep-seqs.qza
+```
+
+### 2.5 Filter table
+https://docs.qiime2.org/2019.1/tutorials/filtering/
+```
+qiime feature-table filter-features \
+  --i-table table.qza \
+  --p-min-frequency 10 \
+  --o-filtered-table feature-frequency-filtered-table.qza
+```
+
+
 # EMP dataset
 
 ## 1 Downloading data
@@ -97,20 +163,3 @@ qiime feature-table filter-features \
 ```
 
 ## 3. Data analysis
-
-# Soil microbiome atlas
-
-## 1 Downloading data
-### 1.1 Introduction
-
-Article: http://science.sciencemag.org/content/359/6373/320/
-
-# Consistent responses of soil microbial communities to elevated nutrient inputs in grasslands across the globe
-
-## 1 Downloading data
-### 1.1 Introduction
-
-Article: https://www.pnas.org/content/112/35/10967
-
->Data deposition: The raw sequence data have been deposited in the NCBI Sequence ReadArchive (accession no.SRP052716and >BioProject accession no.PRJNA272747). The shot-gun metagenomic sequences have been deposited in the Genomes Online >Database(GOLD Study ID Gs0053063)
-
