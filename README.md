@@ -7,61 +7,37 @@ References:
 - Data: https://figshare.com/s/82a2d3f5d38ace925492
 
 ## 2 Qiime2
-### 2.1 Import data
+### 2.1 Import/Summarise/Dada2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
 
 ```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path pe-64-manifest \
-  --output-path paired-end-demux.qza \
+  --input-path SMA_manifest.csv \
+  --output-path SMA_raw.qza \
   --input-format PairedEndFastqManifestPhred64
-```
 
-### 2.2 Remove adaptors contaminants
-https://docs.qiime2.org/2019.1/plugins/available/cutadapt/trim-single/
-```
-qiime cutadapt trim-single \
-  --i-demultiplexed-sequences emp-single-end-sequences.qza \
-  --p-adapter emp-adapters \
-  --o-trimmed-sequences emp-trimmed.qza \
-```
+qiime demux summarize \
+  --i-data SMA_raw.qza \
+  --o-visualization SMA_raw.qzv
 
-### 2.3 Denoise and cluster
-https://docs.qiime2.org/2019.1/plugins/available/dada2/denoise-single/
-```
-qiime dada2 denoise-single \
-  --i-demultiplexed-seqs emp-trimmed.qza \
-  --p-trunc-len 90 \
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs SMA_raw.qza \
+  --p-trunc-len-f 250 \
+  --p-trunc-len-r 215 \
+  --p-trim-left-f 20 \
+  --p-trim-left-r 10 \
   --p-trunc-q 30 \
-  --o-table emp-table \
-  --o-representative-sequences emp-seqs \
-  --o-denoising-stats emp-stats \
-```
-
-### 2.4 Merge studies per project
-https://docs.qiime2.org/2019.1/tutorials/fmt/#merging-denoised-data
-```
-qiime feature-table merge \
-  --i-tables table-1.qza \
-  --i-tables table-2.qza \
-  --o-merged-table table.qza
-  
-qiime feature-table merge-seqs \
-  --i-data rep-seqs-1.qza \
-  --i-data rep-seqs-2.qza \
-  --o-merged-data rep-seqs.qza
-```
-
-### 2.5 Filter table
-https://docs.qiime2.org/2019.1/tutorials/filtering/
-```
-qiime feature-table filter-features \
-  --i-table table.qza \
-  --p-min-frequency 10 \
-  --o-filtered-table feature-frequency-filtered-table.qza
+  --p-n-threads 16 \
+  --o-table SMA_dada2_table \
+  --o-representative-sequences SMA_dada2_seqs \
+  --o-denoising-stats SMA_dada2_stats \
 ```
 
 ***
