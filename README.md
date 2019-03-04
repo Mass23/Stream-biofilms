@@ -1,12 +1,12 @@
 # Soil microbiome atlas
 
-## 1 Downloading data
+## 1. Downloading data
 
 References:
 - Article: http://science.sciencemag.org/content/359/6373/320/
 - Data: https://figshare.com/s/82a2d3f5d38ace925492
 
-## 2 Qiime2
+## 2. Qiime2
 ### 2.1 Import/Summarise/Dada2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
