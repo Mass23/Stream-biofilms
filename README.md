@@ -100,3 +100,17 @@ qiime feature-table filter-features \
 
 # Soil microbiome atlas
 
+## 1 Downloading data
+### 1.1 Introduction
+
+Article: http://science.sciencemag.org/content/359/6373/320/
+
+# Consistent responses of soil microbial communities to elevated nutrient inputs in grasslands across the globe
+
+## 1 Downloading data
+### 1.1 Introduction
+
+Article: https://www.pnas.org/content/112/35/10967
+
+>Data deposition: The raw sequence data have been deposited in the NCBI Sequence ReadArchive (accession no.SRP052716and >BioProject accession no.PRJNA272747). The shot-gun metagenomic sequences have been deposited in the Genomes Online >Database(GOLD Study ID Gs0053063)
+
