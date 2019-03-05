@@ -46,7 +46,6 @@ qiime dada2 denoise-paired \
   --p-trunc-len-r 215 \
   --p-trim-left-f 20 \
   --p-trim-left-r 10 \
-  --p-trunc-q 20 \
   --p-n-threads 16 \
   --o-table SMA_dada2_table.qza \
   --o-representative-sequences SMA_dada2_seqs.qza \
