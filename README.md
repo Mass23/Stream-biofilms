@@ -101,8 +101,7 @@ qiime phylogeny midpoint-root \
   --o-rooted-tree SMA_GTRCAT_100bs_rooted.qza
 ```
 
-### 3.2 Diversity and Taxonomy
-
+### 3.3 Diversity
 ```
 #!/bin/bash
 
@@ -161,6 +160,39 @@ qiime diversity alpha-rarefaction \
   --p-max-depth 4000 \
   --m-metadata-file SMA_metadata.txt \
   --o-visualization alpha-rarefaction.qzv
+```
+
+### 3.4 Taxonomoy
+```
+qiime tools import \
+  --type 'FeatureData[Sequence]' \
+  --input-path 85_otus.fasta \
+  --output-path 85_otus.qza
+
+qiime tools import \
+  --type 'FeatureData[Taxonomy]' \
+  --input-format HeaderlessTSVTaxonomyFormat \
+  --input-path 85_otu_taxonomy.txt \
+  --output-path ref_taxonomy.qza
+  
+qiime feature-classifier extract-reads \
+  --i-sequences 85_otus.qza \
+  --p-f-primer CCTACGGGNBGCASCAG \
+  --p-r-primer GACTACNVGGGTATCTAATCC \
+  --p-trunc-len 250 \
+  --p-min-length 200 \
+  --p-max-length 464 \
+  --o-reads ref-seqs.qza
+  
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads ref-seqs.qza \
+  --i-reference-taxonomy ref-taxonomy.qza \
+  --o-classifier classifier.qza
+  
+qiime feature-classifier classify-sklearn \
+  --i-classifier classifier.qza \
+  --i-reads SMA_dada2_seqs.qza \
+  --o-classification SMA_taxonomy.qza
 ```
 
 ***
