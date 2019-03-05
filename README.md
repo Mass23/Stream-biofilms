@@ -8,8 +8,8 @@ References:
 
 ## 2. Metadata
 
-## 3. Qiime2
-### 3.1 Trimmomatic
+## 3. Processing
+### 3.1 Trimmomatic - reads filtering
 Script: [SMA_trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_trimmomatic.py)
 
 Arguments used:
@@ -23,7 +23,7 @@ Remove unpaired sequences as we want paired-end input in Qiime2:
 rm *unpaired*
 ```
 
-### 3.2 Import data in Qiime2
+### 3.2 Dada2 - denoising
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
