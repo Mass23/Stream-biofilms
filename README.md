@@ -26,7 +26,7 @@ rm *unpaired*
 ### 3.2 Import data in Qiime2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
-Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
+Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
 
 Import, verify quality:
 ```
