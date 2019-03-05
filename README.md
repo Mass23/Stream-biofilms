@@ -12,6 +12,12 @@ References:
 ### 3.1 Trimmomatic
 Script: [SMA_trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_trimmomatic.py)
 
+Arguments used:
+- Minlen: 200
+- Trailing: 3
+- Leading: 3
+- Sliding-window: 4-mers / qual>20
+
 ### 3.2 Import data in Qiime2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
