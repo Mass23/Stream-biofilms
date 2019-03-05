@@ -164,6 +164,10 @@ qiime diversity alpha-rarefaction \
 
 ### 3.4 Taxonomoy
 ```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
 qiime tools import \
   --type 'FeatureData[Sequence]' \
   --input-path 85_otus.fasta \
