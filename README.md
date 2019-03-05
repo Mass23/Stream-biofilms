@@ -102,6 +102,7 @@ qiime phylogeny midpoint-root \
 ```
 
 ### 3.2 Diversity and Taxonomy
+
 #!/bin/bash
 
 source activate qiime2-2019.1
@@ -159,7 +160,7 @@ qiime diversity alpha-rarefaction \
   --p-max-depth 4000 \
   --m-metadata-file SMA_metadata.txt \
   --o-visualization alpha-rarefaction.qzv
-
+```
 
 ***
 # EMP dataset
