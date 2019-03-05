@@ -14,6 +14,7 @@ https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
 
+First, import the sequences and look at the quality:
 ```
 #!/bin/bash
 
@@ -28,6 +29,16 @@ qiime tools import \
 qiime demux summarize \
   --i-data SMA_raw.qza \
   --o-visualization SMA_raw.qzv
+```
+
+According to the quality, choose values to truncate and trim the reads, here:
+- Forward: 20 - 250
+- Reverse: 10 - 215
+
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
 
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs SMA_raw.qza \
@@ -54,8 +65,15 @@ qiime feature-table tabulate-seqs \
   --i-data SMA_dada2_seqs.qza \
   --o-visualization SMA_dada2_seqs.qzv
 ```
+Yet, the data is ready to be analysed.
 
 ### 3.2 Phylogeny
+Pipeline:
+- Mafft: aignment
+- Trimming: mask
+- RAxML: builds tree
+- Midpoint-root: root the tree
+
 ```
 #!/bin/bash
 
@@ -83,6 +101,87 @@ qiime phylogeny midpoint-root \
   --o-rooted-tree SMA_GTRCAT_100bs_rooted.qza
 ```
 
+### 3.2 Diversity and Taxonomy
+
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny SMA_GTRCAT_100bs_rooted.qza \
+  --i-table SMA_dada2_table.qza \
+  --p-sampling-depth 1109 \
+  --m-metadata-file SMA_metadata.txt \
+  --output-dir SMA_diversity
+
+# Alpha diversity
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity SMA_diversity/faith_pd_vector.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --o-visualization SMA_diversity/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity SMA_diversity/evenness_vector.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --o-visualization SMA_diversity/evenness-group-significance.qzv
+
+# Beta diversity
+qiime diversity beta-group-significance \
+  --i-distance-matrix SMA_diversity/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --m-metadata-column BodySite \
+  --o-visualization SMA_diversity/unweighted-unifrac-body-site-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix SMA_diversity/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --m-metadata-column Subject \
+  --o-visualization SMA_diversity/unweighted-unifrac-subject-group-significance.qzv \
+  --p-pairwise
+
+# Emperor plot
+qiime emperor plot \
+  --i-pcoa SMA_diversity/unweighted_unifrac_pcoa_results.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --p-custom-axes DaysSinceExperimentStart \
+  --o-visualization SMA_diversity/unweighted-unifrac-emperor-DaysSinceExperimentStart.qzv
+
+qiime emperor plot \
+  --i-pcoa SMA_diversity/bray_curtis_pcoa_results.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --p-custom-axes DaysSinceExperimentStart \
+  --o-visualization SMA_diversity/bray-curtis-emperor-DaysSinceExperimentStart.qzv
+
+# Alpha rarefaction
+qiime diversity alpha-rarefaction \
+  --i-table table.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth 4000 \
+  --m-metadata-file SMA_metadata.txt \
+  --o-visualization alpha-rarefaction.qzv
+
+# Taxonomy analysis
+qiime feature-classifier classify-sklearn \
+  --i-classifier gg-13-8-99-515-806-nb-classifier.qza \
+  --i-reads SMA_dada2_seqs.qza \
+  --o-classification SMA_taxonomy.qza
+
+qiime metadata tabulate \
+  --m-input-file SMA_taxonomy.qza \
+  --o-visualization SMA_taxonomy.qzv
+
+qiime taxa barplot \
+  --i-table table.qza \
+  --i-taxonomy SMA_taxonomy.qza \
+  --m-metadata-file SMA_metadata.txt \
+  --o-visualization taxa-bar-plots.qzv
+```
 ***
 # EMP dataset
 
