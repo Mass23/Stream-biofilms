@@ -102,12 +102,6 @@ qiime phylogeny midpoint-root \
 ```
 
 ### 3.2 Diversity and Taxonomy
-
-```
-#!/bin/bash
-
-source activate qiime2-2019.1
-
 #!/bin/bash
 
 source activate qiime2-2019.1
@@ -166,22 +160,7 @@ qiime diversity alpha-rarefaction \
   --m-metadata-file SMA_metadata.txt \
   --o-visualization alpha-rarefaction.qzv
 
-# Taxonomy analysis
-qiime feature-classifier classify-sklearn \
-  --i-classifier gg-13-8-99-515-806-nb-classifier.qza \
-  --i-reads SMA_dada2_seqs.qza \
-  --o-classification SMA_taxonomy.qza
 
-qiime metadata tabulate \
-  --m-input-file SMA_taxonomy.qza \
-  --o-visualization SMA_taxonomy.qzv
-
-qiime taxa barplot \
-  --i-table table.qza \
-  --i-taxonomy SMA_taxonomy.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --o-visualization taxa-bar-plots.qzv
-```
 ***
 # EMP dataset
 
