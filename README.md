@@ -112,46 +112,46 @@ qiime diversity core-metrics-phylogenetic \
   --i-table SMA_dada2_table.qza \
   --p-sampling-depth 1109 \
   --m-metadata-file SMA_metadata.txt \
-  --output-dir SMA_diversity
+  --output-dir diversity
 
 # Alpha diversity
 qiime diversity alpha-group-significance \
-  --i-alpha-diversity SMA_diversity/faith_pd_vector.qza \
+  --i-alpha-diversity diversity/faith_pd_vector.qza \
   --m-metadata-file SMA_metadata.txt \
-  --o-visualization SMA_diversity/faith-pd-group-significance.qzv
+  --o-visualization diversity/faith-pd-group-significance.qzv
 
 qiime diversity alpha-group-significance \
-  --i-alpha-diversity SMA_diversity/evenness_vector.qza \
+  --i-alpha-diversity diversity/evenness_vector.qza \
   --m-metadata-file SMA_metadata.txt \
-  --o-visualization SMA_diversity/evenness-group-significance.qzv
+  --o-visualization diversity/evenness-group-significance.qzv
 
 # Beta diversity
 qiime diversity beta-group-significance \
-  --i-distance-matrix SMA_diversity/unweighted_unifrac_distance_matrix.qza \
+  --i-distance-matrix diversity/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file SMA_metadata.txt \
   --m-metadata-column BodySite \
-  --o-visualization SMA_diversity/unweighted-unifrac-body-site-significance.qzv \
+  --o-visualization diversity/unweighted-unifrac-body-site-significance.qzv \
   --p-pairwise
 
 qiime diversity beta-group-significance \
-  --i-distance-matrix SMA_diversity/unweighted_unifrac_distance_matrix.qza \
+  --i-distance-matrix diversity/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file SMA_metadata.txt \
   --m-metadata-column Subject \
-  --o-visualization SMA_diversity/unweighted-unifrac-subject-group-significance.qzv \
+  --o-visualization diversity/unweighted-unifrac-subject-group-significance.qzv \
   --p-pairwise
 
 # Emperor plot
 qiime emperor plot \
-  --i-pcoa SMA_diversity/unweighted_unifrac_pcoa_results.qza \
+  --i-pcoa diversity/unweighted_unifrac_pcoa_results.qza \
   --m-metadata-file SMA_metadata.txt \
   --p-custom-axes DaysSinceExperimentStart \
-  --o-visualization SMA_diversity/unweighted-unifrac-emperor-DaysSinceExperimentStart.qzv
+  --o-visualization diversity/unweighted-unifrac-emperor-DaysSinceExperimentStart.qzv
 
 qiime emperor plot \
-  --i-pcoa SMA_diversity/bray_curtis_pcoa_results.qza \
+  --i-pcoa diversity/bray_curtis_pcoa_results.qza \
   --m-metadata-file SMA_metadata.txt \
   --p-custom-axes DaysSinceExperimentStart \
-  --o-visualization SMA_diversity/bray-curtis-emperor-DaysSinceExperimentStart.qzv
+  --o-visualization diversity/bray-curtis-emperor-DaysSinceExperimentStart.qzv
 
 # Alpha rarefaction
 qiime diversity alpha-rarefaction \
