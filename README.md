@@ -103,6 +103,7 @@ qiime phylogeny midpoint-root \
 
 ### 3.2 Diversity and Taxonomy
 
+```
 #!/bin/bash
 
 source activate qiime2-2019.1
