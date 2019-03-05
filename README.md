@@ -41,7 +41,18 @@ qiime dada2 denoise-paired \
   --o-representative-sequences SMA_dada2_seqs.qza \
   --o-denoising-stats SMA_dada2_stats.qza \
 
-qiime metadata tabulate --m-input-file SMA_dada2_stats.qza --o-visualization SMA_dada2_stats.qzv
+qiime metadata tabulate \
+  --m-input-file SMA_dada2_stats.qza \
+  --o-visualization SMA_dada2_stats.qzv
+
+qiime feature-table summarize \
+  --i-table SMA_dada2_table.qza \
+  --o-visualization SMA_dada2_table.qzv \
+  --m-sample-metadata-file sample-metadata.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data SMA_dada2_seqs.qza \
+  --o-visualization SMA_dada2_seqs.qzv
 ```
 
 ### 3.2 Phylogeny
