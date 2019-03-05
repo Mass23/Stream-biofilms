@@ -68,8 +68,8 @@ Yet, the data is ready to be analysed.
 
 ### 3.2 Phylogeny
 Pipeline:
-- Mafft: aignment
-- Trimming: mask
+- Mafft: alignment
+- Mask: trimming
 - RAxML: builds tree
 - Midpoint-root: root the tree
 
