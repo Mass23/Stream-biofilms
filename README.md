@@ -9,7 +9,10 @@ References:
 ## 2. Metadata
 
 ## 3. Qiime2
-### 3.1 Import/Summarise/Dada2
+### 3.1 Trimmomatic
+Script: [SMA_trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_trimmomatic.py)
+
+### 3.2 Import data in Qiime2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
@@ -42,10 +45,6 @@ source activate qiime2-2019.1
 
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs SMA_raw.qza \
-  --p-trunc-len-f 250 \
-  --p-trunc-len-r 215 \
-  --p-trim-left-f 20 \
-  --p-trim-left-r 10 \
   --p-n-threads 16 \
   --o-table SMA_dada2_table.qza \
   --o-representative-sequences SMA_dada2_seqs.qza \
@@ -66,7 +65,7 @@ qiime feature-table tabulate-seqs \
 ```
 Yet, the data is ready to be analysed.
 
-### 3.2 Phylogeny
+### 3.3 Phylogeny
 Pipeline:
 - Mafft: alignment
 - Mask: trimming
@@ -98,67 +97,6 @@ qiime phylogeny raxml-rapid-bootstrap \
 qiime phylogeny midpoint-root \
   --i-tree SMA_GTRCAT_100bs.qza \
   --o-rooted-tree SMA_GTRCAT_100bs_rooted.qza
-```
-
-### 3.3 Diversity
-```
-#!/bin/bash
-
-source activate qiime2-2019.1
-
-qiime diversity core-metrics-phylogenetic \
-  --i-phylogeny SMA_GTRCAT_100bs_rooted.qza \
-  --i-table SMA_dada2_table.qza \
-  --p-sampling-depth 1109 \
-  --m-metadata-file SMA_metadata.txt \
-  --output-dir diversity
-
-# Alpha diversity
-qiime diversity alpha-group-significance \
-  --i-alpha-diversity diversity/faith_pd_vector.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --o-visualization diversity/faith-pd-group-significance.qzv
-
-qiime diversity alpha-group-significance \
-  --i-alpha-diversity diversity/evenness_vector.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --o-visualization diversity/evenness-group-significance.qzv
-
-# Beta diversity
-qiime diversity beta-group-significance \
-  --i-distance-matrix diversity/unweighted_unifrac_distance_matrix.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --m-metadata-column BodySite \
-  --o-visualization diversity/unweighted-unifrac-body-site-significance.qzv \
-  --p-pairwise
-
-qiime diversity beta-group-significance \
-  --i-distance-matrix diversity/unweighted_unifrac_distance_matrix.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --m-metadata-column Subject \
-  --o-visualization diversity/unweighted-unifrac-subject-group-significance.qzv \
-  --p-pairwise
-
-# Emperor plot
-qiime emperor plot \
-  --i-pcoa diversity/unweighted_unifrac_pcoa_results.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --p-custom-axes DaysSinceExperimentStart \
-  --o-visualization diversity/unweighted-unifrac-emperor-DaysSinceExperimentStart.qzv
-
-qiime emperor plot \
-  --i-pcoa diversity/bray_curtis_pcoa_results.qza \
-  --m-metadata-file SMA_metadata.txt \
-  --p-custom-axes DaysSinceExperimentStart \
-  --o-visualization diversity/bray-curtis-emperor-DaysSinceExperimentStart.qzv
-
-# Alpha rarefaction
-qiime diversity alpha-rarefaction \
-  --i-table table.qza \
-  --i-phylogeny rooted-tree.qza \
-  --p-max-depth 4000 \
-  --m-metadata-file SMA_metadata.txt \
-  --o-visualization alpha-rarefaction.qzv
 ```
 
 ### 3.4 Taxonomoy
