@@ -18,6 +18,11 @@ Arguments used:
 - Leading: 3
 - Sliding-window: 4-mers / qual>20
 
+Remove unpaired sequences as we want paired-end input in Qiime2:
+```
+rm *unpaired*
+```
+
 ### 3.2 Import data in Qiime2
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
