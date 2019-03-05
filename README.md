@@ -28,7 +28,7 @@ https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest_SMA.py
 
-First, import the sequences and look at the quality:
+Import, verify quality:
 ```
 #!/bin/bash
 
@@ -45,10 +45,7 @@ qiime demux summarize \
   --o-visualization SMA_raw.qzv
 ```
 
-According to the quality, choose values to truncate and trim the reads, here:
-- Forward: 20 - 250
-- Reverse: 10 - 215
-
+Denoise, merged paired ends, view results:
 ```
 #!/bin/bash
 
@@ -91,23 +88,23 @@ source activate qiime2-2019.1
 qiime alignment mafft \
   --i-sequences SMA_dada2_seqs.qza \
   --p-n-threads 16 \
-  --o-alignment SMA_aln_seqs.qza \
+  --o-alignment phylogeny/SMA_aln_seqs.qza \
 
 qiime alignment mask \
-  --i-alignment SMA_aln_seqs.qza \
-  --o-masked-alignment SMA_masked_aln_seqs.qza
+  --i-alignment phylogeny/SMA_aln_seqs.qza \
+  --o-masked-alignment phylogeny/SMA_masked_aln_seqs.qza
 
 qiime phylogeny raxml-rapid-bootstrap \
-  --i-alignment SMA_masked_aln_seqs.qza \
+  --i-alignment phylogeny/SMA_masked_aln_seqs.qza \
   --p-bootstrap-replicates 100 \
   --p-n-threads 16 \
   --p-raxml-version AVX2 \
   --p-substitution-model GTRCAT \
-  --o-tree SMA_GTRCAT_100bs.qza
+  --o-tree phylogeny/SMA_GTRCAT_100bs.qza
 
 qiime phylogeny midpoint-root \
-  --i-tree SMA_GTRCAT_100bs.qza \
-  --o-rooted-tree SMA_GTRCAT_100bs_rooted.qza
+  --i-tree phylogeny/SMA_GTRCAT_100bs.qza \
+  --o-rooted-tree phylogeny/SMA_GTRCAT_100bs_rooted.qza
 ```
 
 ### 3.4 Taxonomoy
@@ -118,33 +115,32 @@ source activate qiime2-2019.1
 
 qiime tools import \
   --type 'FeatureData[Sequence]' \
-  --input-path 85_otus.fasta \
-  --output-path 85_otus.qza
+  --input-path taxonomy/85_otus.fasta \
+  --output-path taxonomy/85_otus.qza
 
 qiime tools import \
   --type 'FeatureData[Taxonomy]' \
   --input-format HeaderlessTSVTaxonomyFormat \
-  --input-path 85_otu_taxonomy.txt \
-  --output-path ref_taxonomy.qza
+  --input-path taxonomy/85_otu_taxonomy.txt \
+  --output-path taxonomy/ref_taxonomy.qza
   
 qiime feature-classifier extract-reads \
-  --i-sequences 85_otus.qza \
+  --i-sequences taxonomy/85_otus.qza \
   --p-f-primer CCTACGGGNBGCASCAG \
   --p-r-primer GACTACNVGGGTATCTAATCC \
-  --p-trunc-len 250 \
   --p-min-length 200 \
   --p-max-length 464 \
-  --o-reads ref-seqs.qza
+  --o-reads taxonomy/ref-seqs.qza
   
 qiime feature-classifier fit-classifier-naive-bayes \
-  --i-reference-reads ref-seqs.qza \
-  --i-reference-taxonomy ref-taxonomy.qza \
-  --o-classifier classifier.qza
+  --i-reference-reads taxonomy/ref-seqs.qza \
+  --i-reference-taxonomy taxonomy/ref-taxonomy.qza \
+  --o-classifier taxonomy/classifier.qza
   
 qiime feature-classifier classify-sklearn \
-  --i-classifier classifier.qza \
-  --i-reads SMA_dada2_seqs.qza \
-  --o-classification SMA_taxonomy.qza
+  --i-classifier taxonomy/classifier.qza \
+  --i-reads taxonomy/SMA_dada2_seqs.qza \
+  --o-classification taxonomy/SMA_taxonomy.qza
 ```
 
 ***
