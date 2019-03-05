@@ -16,7 +16,7 @@ Arguments used:
 - Minlen: 200
 - Trailing: 3
 - Leading: 3
-- Sliding-window: 4-mers / qual>20
+- Sliding-window: 4-mers / qual<15
 
 Remove unpaired sequences as we want paired-end input in Qiime2:
 ```
