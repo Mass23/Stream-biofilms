@@ -34,7 +34,7 @@ Begin on Qiime2 from fasta files.
 ```
 qiime tools import \
   --input-path merged_SMA.fna \
-  --output-path sequences.qza \
+  --output-path SMA_sequences.qza \
   --type 'FeatureData[Sequence]'
 ```
 
