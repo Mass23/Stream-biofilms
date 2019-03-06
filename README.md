@@ -33,10 +33,9 @@ Dada2 on R: [SMA_dada2.R](https://github.com/Mass23/StreamBiofilms/blob/master/S
 Begin on Qiime2 from fasta files.
 ```
 qiime tools import \
-  --type 'SampleData[SequencesWithQuality]' \
-  --input-path SMA_manifest.py \
-  --output-path single-end-demux.qza \
-  --input-format SingleEndFastqManifestPhred33
+  --input-path merged_SMA.fna \
+  --output-path sequences.qza \
+  --type 'FeatureData[Sequence]'
 ```
 
 ### 3.3 Phylogeny
