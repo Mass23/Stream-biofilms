@@ -43,6 +43,7 @@ qiime tools import \
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs SMA_raw.qza \
   --p-n-threads 16 \
+  --p-trunc-len-f 0 \
   --o-table SMA_dada2_table.qza \
   --o-representative-sequences SMA_dada2_seqs.qza \
   --o-denoising-stats SMA_dada2_stats.qza \
