@@ -25,8 +25,41 @@ rm *unpaired*
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
+```
+#!/bin/bash
 
-Dada2 on R: [SMA_dada2.R](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_dada2.R)
+source activate qiime2-2019.1
+
+qiime demux summarize \
+  --i-data SMA_raw.qza \
+  --o-visualization SMA_raw.qzv
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path SMA_manifest.csv \
+  --output-path SMA_raw.qza \
+  --input-format PairedEndFastqManifestPhred33
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs SMA_raw.qza \
+  --p-n-threads 16 \
+  --o-table SMA_dada2_table.qza \
+  --o-representative-sequences SMA_dada2_seqs.qza \
+  --o-denoising-stats SMA_dada2_stats.qza \
+
+qiime metadata tabulate \
+  --m-input-file SMA_dada2_stats.qza \
+  --o-visualization SMA_dada2_stats.qzv
+
+qiime feature-table summarize \
+  --i-table SMA_dada2_table.qza \
+  --o-visualization SMA_dada2_table.qzv \
+  --m-sample-metadata-file sample-metadata.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data SMA_dada2_seqs.qza \
+  --o-visualization SMA_dada2_seqs.qzv
+```
 
 ### 2.3 Phylogeny
 Pipeline:
