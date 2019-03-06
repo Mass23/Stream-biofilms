@@ -73,11 +73,6 @@ Pipeline:
 
 source activate qiime2-2019.1
 
-qiime tools import \
-  --input-path merged_reads.fasta \
-  --output-path SMA_dada2_seqs.qza \
-  --type 'FeatureData[Sequence]'
-
 qiime alignment mafft \
   --i-sequences SMA_dada2_seqs.qza \
   --p-n-threads 16 \
