@@ -41,7 +41,7 @@ Pipeline:
 source activate qiime2-2019.1
 
 qiime tools import \
-  --input-path merged_SMA.fna \
+  --input-path merged_reads.fasta \
   --output-path SMA_dada2_seqs.qza \
   --type 'FeatureData[Sequence]'
 
