@@ -31,6 +31,12 @@ Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA
 Dada2 on R: [SMA_dada2.R](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_dada2.R)
 
 Begin on Qiime2 from fasta files.
+```
+qiime tools import \
+  --input-path sequences.fna \
+  --output-path sequences.qza \
+  --type 'FeatureData[Sequence]'
+```
 
 ### 3.3 Phylogeny
 Pipeline:
