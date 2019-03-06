@@ -6,10 +6,8 @@ References:
 - Article: http://science.sciencemag.org/content/359/6373/320/
 - Data: https://figshare.com/s/82a2d3f5d38ace925492
 
-## 2. Metadata
-
-## 3. Processing
-### 3.1 Trimmomatic - reads filtering
+## 2. Processing
+### 2.1 Trimmomatic - reads filtering
 Script: [SMA_trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_trimmomatic.py)
 
 Arguments used:
@@ -23,22 +21,14 @@ Remove unpaired sequences as we want paired-end input in Qiime2:
 rm *unpaired*
 ```
 
-### 3.2 Dada2 - denoising
+### 2.2 Dada2 - denoising
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
 
 Dada2 on R: [SMA_dada2.R](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_dada2.R)
 
-Begin on Qiime2 from fasta files.
-```
-qiime tools import \
-  --input-path merged_SMA.fna \
-  --output-path SMA_sequences.qza \
-  --type 'FeatureData[Sequence]'
-```
-
-### 3.3 Phylogeny
+### 2.3 Phylogeny
 Pipeline:
 - Mafft: alignment
 - Mask: trimming
@@ -49,6 +39,11 @@ Pipeline:
 #!/bin/bash
 
 source activate qiime2-2019.1
+
+qiime tools import \
+  --input-path merged_SMA.fna \
+  --output-path SMA_dada2_seqs.qza \
+  --type 'FeatureData[Sequence]'
 
 qiime alignment mafft \
   --i-sequences SMA_dada2_seqs.qza \
