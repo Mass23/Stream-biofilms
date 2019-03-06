@@ -28,6 +28,8 @@ https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
 
+Dada2 on R: [SMA_dada2.R](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_dada2.R)
+
 Import, verify quality:
 ```
 #!/bin/bash
