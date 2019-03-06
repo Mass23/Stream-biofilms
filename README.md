@@ -67,7 +67,7 @@ qiime phylogeny midpoint-root \
   --o-rooted-tree phylogeny/SMA_GTRCAT_100bs_rooted.qza
 ```
 
-### 3.4 Taxonomoy
+### 3.4 Taxonomy
 ```
 #!/bin/bash
 
