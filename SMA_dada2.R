@@ -22,7 +22,3 @@ names(derepRs) <- sample.names
 
 dadaFs <- dada(derepFs, err=errF, multithread=10)
 dadaRs <- dada(derepRs, err=errR, multithread=10)
-
-mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose=TRUE, maxMismatch=1)
-
-write.fasta(mergers, file = "merged_reads.fasta")
