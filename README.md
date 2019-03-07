@@ -79,9 +79,11 @@ Trimmomatic:
 
 Dada2:
 - Trimming forward
-    - Leading:
-    - Trailing:
+    - Leading: 20
+    - Trailing: 311
     
 - Trimming reverse
-    - Leading:
-    - Trailing:
+    - Leading: 6
+    - Trailing: 225
+
+(75% > 20 and 100% > 15)
