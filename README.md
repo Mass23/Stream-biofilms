@@ -1,3 +1,135 @@
+# Pipeline
+
+## 1. Pre-processing
+### 1.1 Trimmomatic - reads filtering
+Script: [trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/SMA_trimmomatic.py)
+
+```
+rm *unpaired*
+```
+
+### 1.2 Qiime2 - Import and visualise
+
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path DATASET_manifest.csv \
+  --output-path DATASET_raw.qza \
+  --input-format PairedEndFastqManifestPhred33
+
+qiime demux summarize \
+  --i-data DATASET_raw.qza \
+  --o-visualization DATASET_raw.qzv
+ ```
+ 
+ According to the visualisation, decide for thresholds:
+ - Trimming at the beginning
+    - Forward
+    - Reverse
+ - Trimming at the end
+    - Forward
+    - Reverse
+
+### 2.2 Dada2 - denoising
+https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
+
+Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs DATASET_raw.qza \
+  --p-n-threads 16 \
+  --p-trunc-len-f 0 \
+  --o-table DATASET_dada2_table.qza \
+  --o-representative-sequences DATASET_dada2_seqs.qza \
+  --o-denoising-stats DATASET_dada2_stats.qza \
+
+qiime metadata tabulate \
+  --m-input-file DATASET_dada2_stats.qza \
+  --o-visualization DATASET_dada2_stats.qzv
+
+qiime feature-table summarize \
+  --i-table DATASET_dada2_table.qza \
+  --o-visualization DATASET_dada2_table.qzv \
+  --m-sample-metadata-file sample-metadata.tsv
+
+qiime feature-table tabulate-seqs \
+  --i-data DATASET_dada2_seqs.qza \
+  --o-visualization DATASET_dada2_seqs.qzv
+```
+
+### 2.3 Phylogeny
+
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+qiime alignment mafft \
+  --i-sequences DATASET_dada2_seqs.qza \
+  --p-n-threads 16 \
+  --o-alignment phylogeny/DATASET_aln_seqs.qza \
+
+qiime alignment mask \
+  --i-alignment phylogeny/DATASET_aln_seqs.qza \
+  --o-masked-alignment phylogeny/DATASET_masked_aln_seqs.qza
+
+qiime phylogeny raxml-rapid-bootstrap \
+  --i-alignment phylogeny/DATASET_masked_aln_seqs.qza \
+  --p-bootstrap-replicates 100 \
+  --p-n-threads 16 \
+  --p-raxml-version AVX2 \
+  --p-substitution-model GTRCAT \
+  --o-tree phylogeny/DATASET_GTRCAT_100bs.qza
+
+qiime phylogeny midpoint-root \
+  --i-tree phylogeny/DATASET_GTRCAT_100bs.qza \
+  --o-rooted-tree phylogeny/DATASET_GTRCAT_100bs_rooted.qza
+```
+
+### 3.4 Taxonomy
+```
+#!/bin/bash
+
+source activate qiime2-2019.1
+
+qiime tools import \
+  --type 'FeatureData[Sequence]' \
+  --input-path taxonomy/99_otus.fasta \
+  --output-path taxonomy/99_otus.qza
+
+qiime tools import \
+  --type 'FeatureData[Taxonomy]' \
+  --input-format HeaderlessTSVTaxonomyFormat \
+  --input-path taxonomy/99_otu_taxonomy.txt \
+  --output-path taxonomy/ref_taxonomy.qza
+  
+qiime feature-classifier extract-reads \
+  --i-sequences taxonomy/99_otus.qza \
+  --p-f-primer CCTACGGGNBGCASCAG \
+  --p-r-primer GACTACNVGGGTATCTAATCC \
+  --p-min-length 200 \
+  --p-max-length 464 \
+  --o-reads taxonomy/ref-seqs.qza
+  
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads taxonomy/ref-seqs.qza \
+  --i-reference-taxonomy taxonomy/ref-taxonomy.qza \
+  --o-classifier taxonomy/classifier.qza
+  
+qiime feature-classifier classify-sklearn \
+  --i-classifier taxonomy/classifier.qza \
+  --i-reads taxonomy/DATASET_dada2_seqs.qza \
+  --o-classification taxonomy/DATASET_taxonomy.qza
+```
+
 # Soil microbiome atlas
 
 ## 1. Downloading data
