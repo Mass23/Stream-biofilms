@@ -36,7 +36,7 @@ rm *unpaired*
 ### 1.2.2 Qiime2 - Import and visualise
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
-Script [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.sh)
+Script: [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.sh)
 
 ### 1.2.3 Dada2 - denoising
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
@@ -55,10 +55,10 @@ Dada2 options:
     - Trailing: int
 
 ### 1.3 Phylogeny
-Script [q2_phylogeny.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
+Script: [q2_phylogeny.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
 
 ### 1.4 Taxonomy
-Script [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
+Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
 
 # 2. Datasets
 ## 2.1 Soil microbiome atlas
@@ -68,7 +68,7 @@ References:
 - Metadata: https://figshare.com/s/82a2d3f5d38ace925492
 
 Sequencing: Illumina MiSeq Amplicon - 16s
-Reads length: 3000
+Reads length: 300
 Primers: 341f / 805r
 Environment: Soil
 Type: global
