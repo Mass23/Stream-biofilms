@@ -20,11 +20,13 @@ Types:
 
 ## 1.2 Pre-processing
 ### 1.2.1 Trimmomatic - reads filtering
-First, the sequences are filtered with trimmomatic:
-- Sliding-window of 4-mers: filter < 15 quality in average
-- Minimum read length: 200 (MiSeq)
-
 Script: [trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/trimmomatic.py)
+
+Trimmomatic options:
+
+- Sliding-window of 4-mers: filter < 15 quality in average
+
+- Minimum read length: 200 (MiSeq)
 
 Remove unpaired reads:
 ```
@@ -35,7 +37,7 @@ rm *unpaired*
 
 Script [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.sh)
  
- According to the visualisation, decide for thresholds:
+Dada2 options:
 
 - Trimming forward
     - Leading:  int
