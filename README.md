@@ -34,9 +34,16 @@ rm *unpaired*
 ```
 
 ### 1.2.2 Qiime2 - Import and visualise
+Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
 Script [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.sh)
- 
+
+### 1.2.3 Dada2 - denoising
+https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
+
+Script [q2_dada2.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_dada2.sh)
+- Apply the thresholds defined at step 1.1.2
+
 Dada2 options:
 
 - Trimming forward
@@ -46,15 +53,6 @@ Dada2 options:
 - Trimming reverse
     - Leading:  int
     - Trailing: int
-
-### 1.2.3 Dada2 - denoising
-https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
-
-Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/SMA_create_manifest.py
-
-Script [q2_dada2.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_dada2.sh)
-- Apply the thresholds defined at step 1.1.2
-
 
 ### 1.3 Phylogeny
 Script [q2_phylogeny.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
