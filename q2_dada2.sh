@@ -5,7 +5,10 @@ source activate qiime2-2019.1
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs DATASET_raw.qza \
   --p-n-threads 16 \
-  --p-trunc-len-f 0 \
+  --p-trim-left-f int \
+  --p-trunc-len-f int \
+  --p-trim-left-r int \
+  --p-trunc-len-r int \
   --o-table DATASET_dada2_table.qza \
   --o-representative-sequences DATASET_dada2_seqs.qza \
   --o-denoising-stats DATASET_dada2_stats.qza \
