@@ -68,9 +68,14 @@ References:
 - Metadata: https://figshare.com/s/82a2d3f5d38ace925492
 
 Sequencing: Illumina MiSeq Amplicon - 16s
+Reads length: 3000
 Primers: 341f / 805r
 Environment: Soil
 Type: global
+
+Trimmomatic:
+- Minimal length: 200
+- 4-mer quality: 15
 
 - Trimming forward
     - Leading:
