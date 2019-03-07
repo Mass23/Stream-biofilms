@@ -77,6 +77,7 @@ Trimmomatic:
 - Minimal length: 200
 - 4-mer quality: 15
 
+Dada2:
 - Trimming forward
     - Leading:
     - Trailing:
