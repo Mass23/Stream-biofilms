@@ -13,7 +13,7 @@ Primers:
   - 341f / 805r / etc.
 
 Environments:
-  - Glacier fed streams (GS) / Glaciers (GL) / Sediments (SE) / Soils (SO) / River (RI) / Wet land (WL) / Oceans (OC)
+  - Glacier fed streams (GS) / Glaciers (GL) / Sediments (SE) / Soils (SO) / River (RI) / Wet land (WL)
  
 Types:
   - Local / Global
