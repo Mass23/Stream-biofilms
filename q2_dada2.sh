@@ -13,10 +13,9 @@ qiime dada2 denoise-paired \
   --o-representative-sequences DATASET_dada2_seqs.qza \
   --o-denoising-stats DATASET_dada2_stats.qza \
 
-qiime feature-table summarize \
-  --i-table DATASET_dada2_table.qza \
-  --o-visualization DATASET_dada2_table.qzv \
-  --m-sample-metadata-file sample-metadata.tsv
+qiime metadata tabulate \
+  --m-input-file DATASET_dada2_stats.qza \
+  --o-visualization DATASET_dada2_stats.qza.qzv
 
 qiime feature-table tabulate-seqs \
   --i-data DATASET_dada2_seqs.qza \
