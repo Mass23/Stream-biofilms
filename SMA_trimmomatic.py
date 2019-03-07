@@ -7,7 +7,7 @@ from gzip import open as gzopen
 
 parser = argparse.ArgumentParser()
 
-# E.g. python3 SMA_trimmomatic.py -n 6 -l 3 -t 3 -q 20 -m 244
+# E.g. python3 trimmomatic.py -n 6 -q 15 -m 200
 parser.add_argument('-n', '--NumberCores', help='Number of cores to use.', type=int, action = 'store', required = True)
 parser.add_argument('-l', '--LeadingQ', help='Quality threshold to trim nucleotides from the beginning of the read.', type=int, action = 'store', required = True)
 parser.add_argument('-t', '--TrailingQ', help='Quality threshold to trim nucleotides from the end of the read.', type=int, action = 'store', required = True)
@@ -51,8 +51,6 @@ with open('trimmomatic_stats.tsv', 'w') as out:
                     name + "_reverse_paired.fq.gz",
                     name + "_reverse_unpaired.fq.gz",
                     "ILLUMINACLIP:TruSeq3-PE.fa:2:30:10",
-                    "LEADING:" + leading_q,
-                    "TRAILING:" + trailing_q,
                     "SLIDINGWINDOW:4:" + qual_sw,
                     "MINLEN:" + min_len]
 
