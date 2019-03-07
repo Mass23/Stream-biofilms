@@ -1,7 +1,6 @@
 import glob
 import subprocess
 import argparse
-from multiprocessing import Pool
 from Bio import SeqIO
 from gzip import open as gzopen
 
