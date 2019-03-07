@@ -6,6 +6,9 @@ References:
 Sequencing: 
   - Illumina MiSeq Amplicon - 16s / etc.
   
+Reads length:
+  - 300bp / 150bp / etc.
+  
 Primers: 
   - 341f / 805r / etc.
 
