@@ -4,10 +4,10 @@ References:
 - Article / Data / Metadata
 
 Sequencing: 
-  - Illumina MiSeq Amplicon - 16s / etc.
+  - Illumina MiSeq Amplicon - 16s / 454 Pyrosequencing Amplicon - 16s / etc.
   
 Reads length:
-  - 300bp / 150bp / etc.
+  - 300bp / 150bp / 100bp / etc.
   
 Primers: 
   - 341f / 805r / etc.
