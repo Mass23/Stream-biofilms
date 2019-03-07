@@ -1,30 +1,19 @@
 # 1. Pipeline
 ## 1.1 Data and metadata
 References:
-- Article
-- Data
-- Metadata
+- Article / Data / Metadata
 
 Sequencing: 
-  - Illumina MiSeq Amplicon - 16s
-  - etc.
+  - Illumina MiSeq Amplicon - 16s / etc.
   
 Primers: 
-  - 341f / 805r
-  - etc.
+  - 341f / 805r / etc.
 
 Environments:
-  - Soils (SO)
-  - Oceans (OC)
-  - Glaciers (GL)
-  - Glacier fed streams (GS)
-  - Sediments (SE)
-  - River (RI)
-  - Wet land (WL)
+  - Glacier fed streams (GS) / Glaciers (GL) / Sediments (SE) / Soils (SO) / River (RI) / Wet land (WL) / Oceans (OC)
  
 Types:
-  - Local
-  - Global
+  - Local / Global
 
 ## 1.2 Pre-processing
 ### 1.2.1 Trimmomatic - reads filtering
