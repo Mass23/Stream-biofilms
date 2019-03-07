@@ -8,16 +8,12 @@ parser = argparse.ArgumentParser()
 
 # E.g. python3 trimmomatic.py -n 6 -q 15 -m 200
 parser.add_argument('-n', '--NumberCores', help='Number of cores to use.', type=int, action = 'store', required = True)
-parser.add_argument('-l', '--LeadingQ', help='Quality threshold to trim nucleotides from the beginning of the read.', type=int, action = 'store', required = True)
-parser.add_argument('-t', '--TrailingQ', help='Quality threshold to trim nucleotides from the end of the read.', type=int, action = 'store', required = True)
 parser.add_argument('-q', '--SWqual', help='Minimal quality for 4-mers to be kept.', type=int, action = 'store', required = True)
 parser.add_argument('-m', '--MinLength', help='Minimal length for a read to be kept.', type=int, action = 'store', required = True)
 
 args = parser.parse_args()
 
 n_cores = str(args.NumberCores)
-leading_q = str(args.LeadingQ)
-trailing_q = str(args.TrailingQ)
 qual_sw = str(args.SWqual)
 min_len = str(args.MinLength)
 
