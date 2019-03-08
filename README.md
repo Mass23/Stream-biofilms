@@ -53,7 +53,7 @@ Script: [q2_phylogeny.py](https://github.com/Mass23/StreamBiofilms/blob/master/q
 ```python3 q2_phylogeny.py -i DATASET_NAME -n N_THREADS -b N_BOOTSTRAP```
 
 ### 1.4 Taxonomy
-Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
+Script: [q2_taxonomy.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_taxonomy.py)
 
 # 2. Datasets
 ## 2.1 Glacier-fed streams
