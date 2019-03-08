@@ -21,9 +21,13 @@ Types:
 ## 1.2 Pre-processing
 
 ### 1.2.1 Qiime2 - Import and visualise
+
+```source activate qiime2-2019.1```
+
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
-Script: [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.sh)
+Script: [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.py)
+```python3 q2_import_visualise.py -i DATASET_NAME```
 
 ### 1.2.2 Dada2 - denoising
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
