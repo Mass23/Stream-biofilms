@@ -50,6 +50,8 @@ Dada2 options:
 ### 1.3 Phylogeny
 Script: [q2_phylogeny.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.py)
 
+```python3 q2_phylogeny.py -i DATASET_NAME -n N_THREADS -b N_BOOTSTRAP```
+
 ### 1.4 Taxonomy
 Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
 
