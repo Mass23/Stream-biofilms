@@ -1,7 +1,7 @@
 import subprocess
 import argparse
 
-# python3 q2_taxonomy.py -i DATASET_NAME
+# python3 q2_taxonomy.py -i DATASET_NAME -fp STRING -rp STRING -min INT -max INT
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-i', '--id', help='ID of the dataset', type=str, action = 'store', required = True)
