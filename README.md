@@ -57,6 +57,33 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 
 # 2. Datasets
 ## 2.1 Glacier-fed streams
+### 2.1.1 - GS01 (Alpine glacier-fed streams)
+**References**:
+
+- Article: https://www.nature.com/articles/ismej201344.pdf
+- Data: https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=177803
+- Metadata: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3721114/bin/ismej201344x1.pdf
+
+**Specifications**:
+
+- Sequencing: 454 Pyrosequencing Amplicon - 16s
+- Reads length: 440
+- Primers: 515f / 926r
+- Environment: Glacier-fed streams
+- Type: local
+
+**Dada2**:
+
+- Trimming forward
+    - Leading: 
+    - Trailing: 
+    
+- Trimming reverse
+    - Leading: 
+    - Trailing: 
+
+**Comments**: 
+
 ## 2.2 Meltwater
 ## 2.3 Glaciers
 ## 2.4 Cryoconites
