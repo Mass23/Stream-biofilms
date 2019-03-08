@@ -79,3 +79,5 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
     - Leading: 
     - Trailing: 
 
+Comments: 
+- Very bad quality reverse reads!
