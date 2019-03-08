@@ -53,12 +53,15 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 
 # 2. Datasets
 ## 2.1 Soil microbiome atlas
+
 **References**:
+
 - Article: http://science.sciencemag.org/content/359/6373/320/
 - Data: https://figshare.com/s/82a2d3f5d38ace925492
 - Metadata: https://figshare.com/s/82a2d3f5d38ace925492
 
 **Specifications**:
+
 Sequencing: Illumina MiSeq Amplicon - 16s
 Reads length: 300
 Primers: 341f / 805r
