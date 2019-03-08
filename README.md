@@ -27,16 +27,19 @@ Types:
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
 Paired-end: [q2_import_paired.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_paired.py)
+
 Single-end: [q2_import_single.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_single.py)
 
 ```
 python3 q2_import_paired.py -i DATASET_NAME
+
 python3 q2_import_single.py -i DATASET_NAME
 ```
 
 ### 1.2.2 Dada2 - denoising
 
 Paired-end: [q2_denoise_paired.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_denoise_paired.py)
+
 Single-end: [q2_denoise_single.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_denoise_single.py)
 
 - Apply the thresholds defined at step 1.2.1
