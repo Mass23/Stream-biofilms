@@ -72,12 +72,12 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 **Dada2**:
 
 - Trimming forward
-    - Leading: 
-    - Trailing: 
+    - Leading: 17
+    - Trailing: 277
     
 - Trimming reverse
-    - Leading: 
-    - Trailing: 
+    - Leading: 7
+    - Trailing: 223
 
 Comments: 
 - Very bad quality reverse reads!
