@@ -8,8 +8,6 @@ parser.add_argument('-i', '--id', help='ID of the dataset', type=str, action = '
 args = parser.parse_args()
 dataset_id = args.id
 
-subprocess.call('source activate qiime2-2019.1', shell = True)
-
 import_args = ['qiime', 'tools', 'import', '--type', "'SampleData[PairedEndSequencesWithQuality]'", '--input-path', dataset_id + '_manifest.csv', '--output-path', dataset_id + '_raw.qza',  '--input-format', 'PairedEndFastqManifestPhred33']
 subprocess.call(' '.join(import_args), shell=True)
 
