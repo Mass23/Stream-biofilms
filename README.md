@@ -56,8 +56,13 @@ Script: [q2_phylogeny.py](https://github.com/Mass23/StreamBiofilms/blob/master/q
 Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
 
 # 2. Datasets
-## 2.1 Soil microbiome atlas
-
+## 2.1 Glacier-fed streams
+## 2.2 Meltwater
+## 2.3 Glaciers
+## 2.4 Cryoconites
+## 2.5 Sediments
+## 2.6 Soils
+### 2.6.1 - SO01 (Soil microbiome atlas)
 **References**:
 
 - Article: http://science.sciencemag.org/content/359/6373/320/
@@ -84,3 +89,12 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 
 **Comments**: 
 - Very bad quality reverse reads!
+
+## 2.7 Rivers
+## 2.8 Wet lands
+## 2.9 Arctic soils
+## 2.10 Lakes
+## 2.11 Fjords
+## 2.12 Multiple
+
+
