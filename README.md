@@ -19,26 +19,13 @@ Types:
   - Local / Global
 
 ## 1.2 Pre-processing
-### 1.2.1 Trimmomatic - reads filtering
-Script: [trimmomatic.py](https://github.com/Mass23/StreamBiofilms/blob/master/trimmomatic.py)
 
-Trimmomatic options:
-
-- Sliding-window of 4-mers: filter < 15 quality in average
-
-- Minimum read length: 200 (MiSeq)
-
-Remove unpaired reads:
-```
-rm *unpaired*
-```
-
-### 1.2.2 Qiime2 - Import and visualise
+### 1.2.1 Qiime2 - Import and visualise
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
 Script: [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.sh)
 
-### 1.2.3 Dada2 - denoising
+### 1.2.2 Dada2 - denoising
 https://docs.qiime2.org/2019.1/tutorials/importing/?highlight=import
 
 Script [q2_dada2.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_dada2.sh)
