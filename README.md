@@ -26,13 +26,16 @@ Types:
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
-Script: [q2_import_visualise.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.py)
+Paired-end: [q2_import_visualise.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.py)
+Single-end:
 
 ```python3 q2_import_visualise.py -i DATASET_NAME```
 
 ### 1.2.2 Dada2 - denoising
 
-Script [q2_denoise.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_denoise.py)
+Paired-end: [q2_denoise.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_denoise.py)
+Single-end:
+
 - Apply the thresholds defined at step 1.2.1
 
 ```python3 q2_denoise.py -i DATASET_NAME -n NCORES -lf FORWARD_LEFT_TRIM -rf FORWARD_RIGHT_TRIM -lr REVERSE_LEFT_TRIM -rr REVERSE_RIGHT_TRIM```
