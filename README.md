@@ -62,13 +62,14 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 
 **Specifications**:
 
-Sequencing: Illumina MiSeq Amplicon - 16s
-Reads length: 300
-Primers: 341f / 805r
-Environment: Soil
-Type: global
+- Sequencing: Illumina MiSeq Amplicon - 16s
+- Reads length: 300
+- Primers: 341f / 805r
+- Environment: Soil
+- Type: global
 
 **Dada2**:
+
 - Trimming forward
     - Leading: 
     - Trailing: 
