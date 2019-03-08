@@ -1,4 +1,3 @@
-#!/bin/bash
 import subprocess
 import argparse
 
