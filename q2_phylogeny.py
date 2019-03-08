@@ -27,8 +27,8 @@ raxml_args = ['qiime', 'phylogeny', 'raxml-rapid-bootstrap',
     '--p-n-threads', n_threads,
     '--p-raxml-version', 'AVX2',
     '--p-substitution-model', 'GTRCAT',
-    '--o-tree', 'phylogeny/' + dataset_id + '_GTRCAT_100bs.qza']
+    '--o-tree', 'phylogeny/' + dataset_id + '_GTRCAT_' + n_bootstraps + 'bs.qza']
 subprocess.call(' '.join(raxml_args), shell = True)
 
-root_args = ['qiime', 'phylogeny', 'midpoint-root', '--i-tree', 'phylogeny/' + dataset_id + '_GTRCAT_100bs.qza', '--o-rooted-tree', 'phylogeny/' + dataset_id + '_GTRCAT_100bs_rooted.qza']
+root_args = ['qiime', 'phylogeny', 'midpoint-root', '--i-tree', 'phylogeny/' + dataset_id + '_GTRCAT_' + n_bootstraps + 'bs.qza', '--o-rooted-tree', 'phylogeny/' + dataset_id + '_GTRCAT_' + n_bootstraps + 'bs.qza']
 subprocess.call(' '.join(root_args), shell = True)
