@@ -48,7 +48,7 @@ Dada2 options:
     - Trailing: int
 
 ### 1.3 Phylogeny
-Script: [q2_phylogeny.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
+Script: [q2_phylogeny.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.py)
 
 ### 1.4 Taxonomy
 Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.sh)
