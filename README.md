@@ -67,7 +67,7 @@ Script: [q2_taxonomy.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 **Specifications**:
 
 - Sequencing: 454 Pyrosequencing Amplicon - 16s
-- Reads length: 440
+- Reads length: 447
 - Primers: 515f / 926r
 - Environment: Glacier-fed streams
 - Type: local
