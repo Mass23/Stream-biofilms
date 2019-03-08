@@ -73,6 +73,8 @@ ___
 - Sequencing: 454 Pyrosequencing Amplicon - 16s
 - Reads length: 447
 - Primers: 515f / 926r
+  - GTGNCAGCMGCCGCGGTAA
+  - CCGYCAATTYMTTTRAGTTT
 - Environment: Glacier-fed streams
 - Type: local
 
