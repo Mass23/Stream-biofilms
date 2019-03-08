@@ -57,7 +57,9 @@ Script: [q2_taxonomy.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 
 ```python3 q2_taxonomy.py -i DATASET_NAME -fp STRING -rp STRING -min INT -max INT```
 
+***
 # 2. Datasets
+___
 ## 2.1 Glacier-fed streams
 ### 2.1.1 - GS01 (Alpine glacier-fed streams)
 **References**:
@@ -86,10 +88,19 @@ Script: [q2_taxonomy.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 
 **Comments**: 
 
+___
 ## 2.2 Meltwater
+
+___
 ## 2.3 Glaciers
+
+___
 ## 2.4 Cryoconites
+
+___
 ## 2.5 Sediments
+
+___
 ## 2.6 Soils
 ### 2.6.1 - SO01 (Soil microbiome atlas)
 **References**:
@@ -119,11 +130,22 @@ Script: [q2_taxonomy.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2
 **Comments**: 
 - Very bad quality reverse reads!
 
+___
 ## 2.7 Rivers
+
+___
 ## 2.8 Wet lands
+
+___
 ## 2.9 Arctic soils
+
+___
 ## 2.10 Lakes
+
+___
 ## 2.11 Fjords
+
+___
 ## 2.12 Multiple
 
 
