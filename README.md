@@ -26,7 +26,7 @@ Types:
 
 Manifest file creation: https://github.com/Mass23/StreamBiofilms/blob/master/create_manifest.py
 
-Script: [q2_import_visualise.sh](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.py)
+Script: [q2_import_visualise.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_import_visualise.py)
 
 ```python3 q2_import_visualise.py -i DATASET_NAME```
 
