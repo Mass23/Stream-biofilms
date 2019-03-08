@@ -55,6 +55,8 @@ Script: [q2_phylogeny.py](https://github.com/Mass23/StreamBiofilms/blob/master/q
 ### 1.4 Taxonomy
 Script: [q2_taxonomy.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_taxonomy.py)
 
+```python3 q2_taxonomy.py -i DATASET_NAME -fp STRING -rp STRING -min INT -max INT```
+
 # 2. Datasets
 ## 2.1 Glacier-fed streams
 ### 2.1.1 - GS01 (Alpine glacier-fed streams)
