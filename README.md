@@ -70,7 +70,7 @@ ___
 
 **Specifications**:
 
-- Sequencing: 454 Pyrosequencing Amplicon - 16s
+- Sequencing: 454 Pyrosequencing Amplicon - 16s single-end
 - Reads length: 447
 - Primers:
   - 515f: GTGNCAGCMGCCGCGGTAA
@@ -81,12 +81,8 @@ ___
 **Dada2**:
 
 - Trimming forward
-    - Leading: 
-    - Trailing: 
-    
-- Trimming reverse
-    - Leading: 
-    - Trailing: 
+    - Leading: 0
+    - Trailing: 448
 
 **Comments**: 
 
@@ -113,7 +109,7 @@ ___
 
 **Specifications**:
 
-- Sequencing: Illumina MiSeq Amplicon - 16s
+- Sequencing: Illumina MiSeq Amplicon - 16s paired-end
 - Reads length: 300
 - Primers: 
   - 341f: CCTACGGGNBGCASCAG
