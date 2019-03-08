@@ -32,7 +32,7 @@ Script: [q2_import_visualise.py](https://github.com/Mass23/StreamBiofilms/blob/m
 
 ### 1.2.2 Dada2 - denoising
 
-Script [q2_dada2.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_dada2.py)
+Script [q2_denoise.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_denoise.py)
 - Apply the thresholds defined at step 1.2.1
 
 ```python3 q2_denoise.py -i DATASET_NAME -n NCORES -lf FORWARD_LEFT_TRIM -rf FORWARD_RIGHT_TRIM -lr REVERSE_LEFT_TRIM -rr REVERSE_RIGHT_TRIM```
