@@ -45,9 +45,9 @@ Single-end: [q2_denoise_single.py](https://github.com/Mass23/StreamBiofilms/blob
 - Apply the thresholds defined at step 1.2.1
 
 ```
-python3 q2_denoise_paired.py -i DATASET_NAME -n N_CORES -lf FORWARD_LEFT_TRIM -rf FORWARD_RIGHT_TRIM -lr REVERSE_LEFT_TRIM -rr REVERSE_RIGHT_TRIM
+python3 q2_denoise_paired.py -i DATASET_NAME -n N_THREADS -lf FORWARD_LEFT_TRIM -rf FORWARD_RIGHT_TRIM -lr REVERSE_LEFT_TRIM -rr REVERSE_RIGHT_TRIM
 
-python3 q2_denoise_single.py -i DATASET_NAME -n N_CORES -l LEFT_TRIM -r RIGHT_TRIM
+python3 q2_denoise_single.py -i DATASET_NAME -n N_THREADS -l LEFT_TRIM -r RIGHT_TRIM
 ```
 
 ### 1.3 Phylogeny
