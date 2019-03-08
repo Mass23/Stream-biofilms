@@ -72,9 +72,9 @@ ___
 
 - Sequencing: 454 Pyrosequencing Amplicon - 16s
 - Reads length: 447
-- Primers: 515f / 926r
-  - GTGNCAGCMGCCGCGGTAA
-  - CCGYCAATTYMTTTRAGTTT
+- Primers:
+  - 515f: GTGNCAGCMGCCGCGGTAA
+  - 926r: CCGYCAATTYMTTTRAGTTT
 - Environment: Glacier-fed streams
 - Type: local
 
@@ -115,7 +115,9 @@ ___
 
 - Sequencing: Illumina MiSeq Amplicon - 16s
 - Reads length: 300
-- Primers: 341f / 805r
+- Primers: 
+  - 341f: CCTACGGGNBGCASCAG
+  - 805r: GACTACNVGGGTATCTAATCC
 - Environment: Soil
 - Type: global
 
