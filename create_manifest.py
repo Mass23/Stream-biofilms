@@ -7,11 +7,11 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('-i', '--id', help='ID of the dataset', type=str, action = 'store', required = True)
 args = parser.parse_args()
-n_cores = str(args.NumberCores)
+dataset_id = args.id 
 
 cwd = os.getcwd()
 
-with open('SMA_manifest.csv', 'w') as out:
+with open(dataset_id + '_manifest.csv', 'w') as out:
 
     files_list = glob.glob('reads/*.fastq.gz')
     id_set = set()
