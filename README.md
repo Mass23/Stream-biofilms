@@ -50,16 +50,6 @@ python3 q2_denoise_paired.py -i DATASET_NAME -n N_CORES -lf FORWARD_LEFT_TRIM -r
 python3 q2_denoise_single.py -i DATASET_NAME -n N_CORES -l LEFT_TRIM -r RIGHT_TRIM
 ```
 
-Dada2 options:
-
-- Trimming forward
-    - Leading:  int
-    - Trailing: int
-    
-- Trimming reverse
-    - Leading:  int
-    - Trailing: int
-
 ### 1.3 Phylogeny
 Script: [q2_phylogeny.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_phylogeny.py)
 
