@@ -89,6 +89,31 @@ ___
 
 **Comments**: 
 
+### 2.1.2 - GS02 (China, glacier-fed streams in the Tianshan mountains)
+**References**:
+
+- Article: https://www.nature.com/articles/s41598-017-13086-9
+- Data: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA398147/
+- Metadata: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA398147/
+
+**Specifications**:
+
+- Sequencing: Illumina MiSeq Amplicon - 16s
+- Reads length: 420
+- Primers:
+  - 338f: ACTCCTACGGGAGGCAGCA
+  - 806r: GGACTACHVGGGTWTCTAAT
+- Environment: Glacier-fed streams
+- Type: local
+
+**Dada2**:
+
+- Trimming forward
+    - Leading:
+    - Trailing:
+
+**Comments**: 
+
 ___
 ## 2.2 Meltwater
 
