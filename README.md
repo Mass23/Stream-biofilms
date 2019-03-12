@@ -89,6 +89,8 @@ ___
 
 **Comments**: 
 
+
+
 ### 2.1.2 - GS02 (China, glacier-fed streams in the Tianshan mountains)
 **References**:
 
@@ -113,6 +115,35 @@ ___
     - Trailing:
 
 **Comments**: 
+
+
+
+### 2.1.3 - GS03 (McMurdo valley glacier-fed streams, Antarctica)
+**References**:
+
+- Article: https://academic.oup.com/femsec/article/92/10/fiw148/2197762#supplementary-data
+- Data: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA228951
+- Metadata: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA228951
+
+**Specifications**:
+
+- Sequencing: 454 Pyrosequencing - 16s
+- Reads length: 
+- Primers:
+  - 939f: TTGACGGGGGCCCGCACAAG
+  - 1492r: GTTTACCTTGTTACGACTT
+- Environment: Glacier-fed streams
+- Type: local
+
+**Dada2**:
+
+- Trimming forward
+    - Leading:
+    - Trailing:
+
+**Comments**: 
+
+
 
 ___
 ## 2.2 Meltwater
