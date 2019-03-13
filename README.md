@@ -78,8 +78,6 @@ ___
 - Primers:
   - 515f: GTGNCAGCMGCCGCGGTAA
   - 926r: CCGYCAATTYMTTTRAGTTT
-- Environment: Glacier-fed streams
-- Type: local
 
 **Dada2**:
 
@@ -105,8 +103,6 @@ ___
 - Primers:
   - 338f: ACTCCTACGGGAGGCAGCA
   - 806r: GGACTACHVGGGTWTCTAAT
-- Environment: Glacier-fed streams
-- Type: local
 
 **Dada2**:
 
@@ -132,14 +128,60 @@ ___
 - Primers:
   - 939f: TTGACGGGGGCCCGCACAAG
   - 1492r: GTTTACCTTGTTACGACTT
-- Environment: Glacier-fed streams
-- Type: local
 
 **Dada2**:
 
 - Trimming forward
     - Leading:
     - Trailing:
+
+**Comments**: 
+
+
+
+### 2.1.4 - GS04 ()
+**References**:
+
+- Article: 
+- Data: 
+- Metadata: 
+
+**Specifications**:
+
+- Sequencing: 
+- Reads length: 
+- Primers:
+
+**Dada2**:
+
+- Trimming forward
+    - Leading:
+    - Trailing:
+
+**Comments**: 
+
+
+
+### 2.1.5 - GS05 (Microbial communities of the Lemon Creek Glacier)
+**References**:
+
+- Article: https://www.frontiersin.org/articles/10.3389/fmicb.2015.00495/full#B3
+- Data: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA248307
+- Metadata: 
+
+**Specifications**:
+
+- Sequencing: 454 Pyrosequencing - 16s
+- Reads length: 300
+- Primers:
+  - 515f: GTGCCAGCMGCCGCGGTAA
+  - 806r: GGACTACVSGGGTATCTAAT
+
+**Dada2**:
+
+- Trimming forward
+    - Leading: 
+    - Trailing: 
 
 **Comments**: 
 
@@ -173,8 +215,6 @@ ___
 - Primers: 
   - 341f: CCTACGGGNBGCASCAG
   - 805r: GACTACNVGGGTATCTAATCC
-- Environment: Soil
-- Type: global
 
 **Dada2**:
 
