@@ -24,6 +24,7 @@ denoise_args = ['qiime','dada2', 'denoise-single',
   '--p-n-threads', str(n_threads),
   '--p-trim-left', str(l),
   '--p-trunc-len', str(r),
+  '--p-trunc-q 15',
   '--o-table', dataset_id + '_dada2_table.qza',
   '--o-representative-sequences', dataset_id + '_dada2_seqs.qza',
   '--o-denoising-stats', dataset_id + '_dada2_stats.qza']
