@@ -42,7 +42,11 @@ Paired-end: [q2_denoise_paired.py](https://github.com/Mass23/StreamBiofilms/blob
 
 Single-end: [q2_denoise_single.py](https://github.com/Mass23/StreamBiofilms/blob/master/q2_denoise_single.py)
 
-- Apply the thresholds defined at step 1.2.1
+Apply the following thresholds:
+- Trimming (forward and reverse, leading and trailing):
+  - 75% >= qual. 15
+  - 50& >= qual. 25
+- Trim reads at the firs value below 15 qual. (p-trun-q 15)
 
 ```
 python3 q2_denoise_paired.py -i DATASET_NAME -n N_THREADS -lf FORWARD_LEFT_TRIM -rf FORWARD_RIGHT_TRIM -lr REVERSE_LEFT_TRIM -rr REVERSE_RIGHT_TRIM
