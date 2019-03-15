@@ -45,7 +45,7 @@ Single-end: [q2_denoise_single.py](https://github.com/Mass23/StreamBiofilms/blob
 Apply the following thresholds:
 - Trimming (forward and reverse, leading and trailing):
   - 75% >= qual. 15
-  - 50& >= qual. 25
+  - 50% >= qual. 25
 - Trim reads at the firs value below 15 qual. (p-trun-q 15)
 
 ```
