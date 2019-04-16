@@ -45,6 +45,6 @@ subprocess.call(' '.join(fit_args), shell = True)
 
 classify_args = ['qiime', 'feature-classifier', 'classify-sklearn',
   '--i-classifier', 'taxonomy/classifier.qza',
-  '--i-reads', 'taxonomy/' + dataset_id + '_dada2_seqs.qza',
+  '--i-reads', + dataset_id + '_dada2_seqs.qza',
   '--o-classification', 'taxonomy/' + dataset_id + '_taxonomy.qza']
 subprocess.call(' '.join(classify_args), shell = True)
