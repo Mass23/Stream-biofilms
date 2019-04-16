@@ -34,12 +34,12 @@ classifier_args = ['qiime', 'feature-classifier', 'extract-reads',
   '--p-r-primer', reverse_primer,
   '--p-min-length', minimal_length,
   '--p-max-length', maximal_length,
-  '--o-reads', 'taxonomy/ref-seqs.qza']
+  '--o-reads', 'taxonomy/ref_seqs.qza']
 subprocess.call(' '.join(classifier_args), shell = True)
 
 fit_args = ['qiime', 'feature-classifier', 'fit-classifier-naive-bayes',
-  '--i-reference-reads', 'taxonomy/ref-seqs.qza',
-  '--i-reference-taxonomy', 'taxonomy/ref-taxonomy.qza',
+  '--i-reference-reads', 'taxonomy/ref_seqs.qza',
+  '--i-reference-taxonomy', 'taxonomy/ref_taxonomy.qza',
   '--o-classifier' ,'taxonomy/classifier.qza']
 subprocess.call(' '.join(fit_args), shell = True)
 
